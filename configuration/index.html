@@ -335,17 +335,10 @@ no gap filling, nearby-date substitution or mosaicking is applied. See
 <td>Exact UTC acquisition date</td>
 </tr>
 <tr>
-<td>Terra MODIS</td>
+<td>MODIS Terra/Aqua</td>
 <td><code>modis</code></td>
-<td><code>Terra MODIS</code></td>
+<td><code>Terra/Aqua MODIS</code> for both, <code>Terra MODIS</code> for Terra</td>
 <td>Optional sinusoidal tile, e.g. <code>h18v04</code></td>
-<td>Explicit composite policy</td>
-</tr>
-<tr>
-<td>Aqua MODIS</td>
-<td><code>modis_aqua</code></td>
-<td><code>Aqua MODIS</code></td>
-<td>Same optional convention</td>
 <td>Explicit composite policy</td>
 </tr>
 <tr>
@@ -366,6 +359,9 @@ no gap filling, nearby-date substitution or mosaicking is applied. See
 </table>
 <p>Only calibrated spacecraft domains are accepted. NOAA VIIRS spacecraft and
 other products are not substituted for the published Suomi NPP domain.</p>
+<p>Existing Aqua-only configurations use <code>modis_aqua</code> with <code>Aqua MODIS</code>.
+The grouped MODIS setting preserves the Terra or Aqua calibration and source
+granule ID in each map.</p>
 <h2 id="eight-day-composites">Eight-day composites</h2>
 <p>MODIS and VIIRS require:</p>
 <pre><code class="language-json">&quot;composite_policy&quot;: &quot;contains-analysis-date&quot;
