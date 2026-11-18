@@ -1,0 +1,13 @@
+{
+  "product": "landsat_c2l2",
+  "sensor": "L9",
+  "bounds": [8.75, 40.005, 8.77, 40.02],
+  "day": "2021-11-18",
+  "tile": "193032",
+  "landcover_year": 2021,
+  "landcover_policy": "fixed-year",
+  "downscale": false,
+  "models_dir": "../model-assets",
+  "cache_dir": "../cache",
+  "output": "../outputs/lfmc_landsat9_20211118.tif"
+}

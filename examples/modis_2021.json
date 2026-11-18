@@ -1,0 +1,19 @@
+{
+  "product": "modis",
+  "sensor": "Terra MODIS",
+  "bounds": [
+    8.75,
+    40.005,
+    8.77,
+    40.02
+  ],
+  "day": "2021-07-22",
+  "tile": "h18v04",
+  "composite_policy": "contains-analysis-date",
+  "landcover_year": 2021,
+  "landcover_policy": "fixed-year",
+  "downscale": false,
+  "models_dir": "../model-assets",
+  "cache_dir": "../cache",
+  "output": "../outputs/modis_2021.tif"
+}

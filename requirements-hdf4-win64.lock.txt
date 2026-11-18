@@ -1,0 +1,3 @@
+# Supplemental pip dependency for Python 3.12 / Windows win-64.
+# Install after the explicit Conda lock.
+pyhdf==0.11.7 --hash=sha256:a5cb1b5242a6a8a59acb04e098015f232ee7f54094120e9473b72c6d9eadf147

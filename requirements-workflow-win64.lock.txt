@@ -1,0 +1,5 @@
+# Supplemental pip dependencies for Python 3.12 / Windows win-64.
+# Includes the existing HDF4 lock and the tested AOI readers.
+-r requirements-hdf4-win64.lock.txt
+shapely==2.2.0 --hash=sha256:90895df6542ae039fc6557dec6194e3509e883fbd6f5788e3c3e7a38fe46b257
+pyshp==3.1.9 --hash=sha256:e20febdaaef14d153f7eabfb8143edfcf61ca6d454f20ba214076dc994901db1

@@ -1,0 +1,18 @@
+{
+  "bounds": [
+    8.75,
+    40.0,
+    8.77,
+    40.02
+  ],
+  "day": "2021-07-22",
+  "tile": "",
+  "landcover_year": 2021,
+  "landcover_policy": "fixed-year",
+  "downscale": false,
+  "models_dir": "../model-assets",
+  "cache_dir": "../cache",
+  "output": "../outputs/sentinel3a_2021.nc",
+  "product": "s3syn300",
+  "sensor": "S3A"
+}

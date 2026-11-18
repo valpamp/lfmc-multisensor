@@ -1,0 +1,16 @@
+{
+  "aoi_circle": {"latitude": 40.01, "longitude": 8.76, "radius_km": 0.75},
+  "day": "2023-07-01",
+  "end_day": "2023-07-31",
+  "tile": "32TMK",
+  "landcover_year": 2021,
+  "landcover_policy": "fixed-year",
+  "models_dir": "../model-assets",
+  "cache_dir": "../cache",
+  "output": "../outputs/sentinel2_statistics_202307.tif",
+  "output_label": "sardinia_202307",
+  "statistics": true,
+  "statistics_by_vegetation": true,
+  "statistics_centre": "median",
+  "statistics_support": "available"
+}

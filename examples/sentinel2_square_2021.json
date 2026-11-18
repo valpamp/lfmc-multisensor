@@ -1,0 +1,12 @@
+{
+  "aoi_square": {"latitude": 40.01, "longitude": 8.76, "side_km": 1.5},
+  "day": "2021-07-22",
+  "tile": "32TMK",
+  "landcover_year": 2021,
+  "landcover_policy": "fixed-year",
+  "downscale": false,
+  "models_dir": "../model-assets",
+  "cache_dir": "../cache",
+  "output": "../outputs/lfmc.tif",
+  "output_label": "sardinia_square"
+}

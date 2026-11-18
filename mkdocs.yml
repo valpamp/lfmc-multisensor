@@ -1,0 +1,31 @@
+site_name: lfmc-multisensor
+site_description: Map live fuel moisture from satellite reflectance, weather and terrain.
+docs_dir: docs/guide
+exclude_docs: |
+  /assets/paper-assets.json
+  /assets/paper-workflow.png
+site_dir: validation-local/documentation-site
+use_directory_urls: true
+strict: true
+theme:
+  name: mkdocs
+  highlightjs: true
+nav:
+  - Overview: index.md
+  - Installation: installation.md
+  - Provider accounts: accounts.md
+  - Desktop GUI: gui.md
+  - First map: tutorial.md
+  - Configuration: configuration.md
+  - Outputs: outputs.md
+  - AOI statistics: statistics.md
+  - Method and validation: method-and-validation.md
+  - Troubleshooting: troubleshooting.md
+  - Citation: citation.md
+plugins:
+  - search
+markdown_extensions:
+  - tables
+  - fenced_code
+repo_url: https://github.com/valpamp/lfmc-multisensor
+site_url: https://valpamp.github.io/lfmc-multisensor/

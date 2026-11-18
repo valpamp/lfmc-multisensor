@@ -1,0 +1,30 @@
+cff-version: 1.2.0
+message: "If you use lfmc-multisensor, please cite the accompanying paper below."
+type: software
+title: lfmc-multisensor
+version: 0.1.0.dev0
+authors:
+  - family-names: Pampanoni
+    given-names: Valerio
+    orcid: https://orcid.org/0000-0002-9946-1303
+preferred-citation:
+  type: article
+  title: A Unified Multisensor Machine-Learning Framework for Live Fuel Moisture Content Retrieval
+  authors:
+    - family-names: Pampanoni
+      given-names: Valerio
+    - family-names: Chuvieco
+      given-names: Emilio
+    - family-names: Ferrari
+      given-names: Alvise
+    - family-names: Laneve
+      given-names: Giovanni
+    - family-names: Saquella
+      given-names: Simone
+  journal: Remote Sensing
+  volume: "18"
+  issue: "21"
+  start: "3744"
+  year: 2026
+  doi: 10.3390/rs18213744
+  url: https://doi.org/10.3390/rs18213744

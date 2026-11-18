@@ -1,0 +1,130 @@
+{
+    "scope":  "Published bundle identities and ordered inference metadata; no model weights",
+    "serialization_runtime":  {
+                                  "scikit_learn":  "1.9.0"
+                              },
+    "artifacts":  {
+                      "Grass":  {
+                                    "sha256":  "a86a15bb1acf69ee2a582fb9d14cff54597139ba2902423d0c212d0e9766474a",
+                                    "features":  [
+                                                     "NDVI",
+                                                     "NDII",
+                                                     "EVI2",
+                                                     "precip_24h",
+                                                     "precip_3d",
+                                                     "precip_1w",
+                                                     "precip_4w",
+                                                     "precip_12w",
+                                                     "RH_06h",
+                                                     "RH_09h",
+                                                     "RH_12h",
+                                                     "RH_15h",
+                                                     "Tmax",
+                                                     "VP",
+                                                     "wind",
+                                                     "VPD",
+                                                     "elevation",
+                                                     "slope",
+                                                     "aspect",
+                                                     "sin_DOY",
+                                                     "cos_DOY"
+                                                 ],
+                                    "model_class":  "RandomForestRegressor",
+                                    "scaler_class":  "RobustScaler",
+                                    "target_class":  "QuantileTransformer",
+                                    "calibration_domains":  [
+                                                                "landsat_c2l2::L8",
+                                                                "landsat_c2l2::L9",
+                                                                "modis::Terra MODIS",
+                                                                "modis_aqua::Aqua MODIS",
+                                                                "s3syn300::S3A",
+                                                                "s3syn300::S3B",
+                                                                "viirs::Suomi NPP VIIRS"
+                                                            ],
+                                    "version":  "1.0.0"
+                                },
+                      "Shrub":  {
+                                    "sha256":  "0a2011183df87ae22acbcb5c70f724be7d6ad9891cc11b9ef02d55f61962c316",
+                                    "features":  [
+                                                     "NDVI",
+                                                     "NDII",
+                                                     "EVI2",
+                                                     "precip_24h",
+                                                     "precip_3d",
+                                                     "precip_1w",
+                                                     "precip_4w",
+                                                     "precip_12w",
+                                                     "RH_06h",
+                                                     "RH_09h",
+                                                     "RH_12h",
+                                                     "RH_15h",
+                                                     "Tmax",
+                                                     "VP",
+                                                     "wind",
+                                                     "VPD",
+                                                     "elevation",
+                                                     "slope",
+                                                     "aspect",
+                                                     "sin_DOY",
+                                                     "cos_DOY"
+                                                 ],
+                                    "model_class":  "RandomForestRegressor",
+                                    "scaler_class":  "RobustScaler",
+                                    "target_class":  "QuantileTransformer",
+                                    "calibration_domains":  [
+                                                                "landsat_c2l2::L8",
+                                                                "landsat_c2l2::L9",
+                                                                "modis::Terra MODIS",
+                                                                "modis_aqua::Aqua MODIS",
+                                                                "s3syn300::S3A",
+                                                                "s3syn300::S3B",
+                                                                "viirs::Suomi NPP VIIRS"
+                                                            ],
+                                    "version":  "1.0.0"
+                                },
+                      "Tree":  {
+                                   "sha256":  "07917fc8143e621e399686d8241eb8702c13b0d30b02ebabf0531d219e3e07dc",
+                                   "features":  [
+                                                    "NDVI",
+                                                    "NDII",
+                                                    "precip_24h",
+                                                    "precip_3d",
+                                                    "precip_1w",
+                                                    "precip_4w",
+                                                    "precip_12w",
+                                                    "RH_06h",
+                                                    "RH_09h",
+                                                    "RH_12h",
+                                                    "RH_15h",
+                                                    "Tmax",
+                                                    "VP",
+                                                    "wind",
+                                                    "VPD",
+                                                    "elevation",
+                                                    "slope",
+                                                    "aspect",
+                                                    "sin_DOY",
+                                                    "cos_DOY"
+                                                ],
+                                   "model_class":  "RandomForestRegressor",
+                                   "scaler_class":  "RobustScaler",
+                                   "target_class":  "QuantileTransformer",
+                                   "calibration_domains":  [
+                                                               "landsat_c2l2::L8",
+                                                               "landsat_c2l2::L9",
+                                                               "modis::Terra MODIS",
+                                                               "modis_aqua::Aqua MODIS",
+                                                               "s3syn300::S3A",
+                                                               "s3syn300::S3B",
+                                                               "viirs::Suomi NPP VIIRS"
+                                                           ],
+                                   "version":  "1.0.0"
+                               }
+                  },
+    "model_set":  {
+                      "id":  "lfmc-multisensor-publication",
+                      "version":  "1.0.0",
+                      "map_version":  "v01",
+                      "paper_doi":  "10.3390/rs18213744"
+                  }
+}

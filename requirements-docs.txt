@@ -1,0 +1,2 @@
+# Optional documentation builder; not an inference dependency.
+mkdocs==1.6.1

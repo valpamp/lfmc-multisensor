@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "lfmc-multisensor"
+version = "0.1.0.dev0"
+description = "Multisensor live fuel moisture inference"
+license = "PolyForm-Noncommercial-1.0.0"
+license-files = ["LICENSE", "OUTPUT_TERMS.md"]
+requires-python = ">=3.12"
+dependencies = ["numpy", "joblib", "scikit-learn==1.9.0"]
+
+[project.optional-dependencies]
+test = ["pytest"]
+validation = ["pandas", "rasterio", "pyproj"]
+workflow = ["rasterio", "pyproj", "requests", "s3fs", "cdsapi", "xarray", "netCDF4", "h5py", "pyhdf>=0.11", "shapely>=2,<3", "pyshp>=2.3,<4"]
+gui = ["rasterio", "pyproj", "requests", "s3fs", "cdsapi", "xarray", "netCDF4", "h5py", "pyhdf>=0.11", "shapely>=2,<3", "pyshp>=2.3,<4", "matplotlib>=3.10,<4"]
+statistics = ["matplotlib>=3.10,<4"]
+
+[project.scripts]
+lfmc-multisensor = "lfmc_multisensor.cli:main"
+
+[project.gui-scripts]
+lfmc-multisensor-gui = "lfmc_multisensor.gui:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+lfmc_multisensor = ["publication_models.json", "aw3d30_v41_tiles.txt.gz"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
