@@ -7,7 +7,7 @@ import os
 from pathlib import Path
 
 import rasterio
-from .config import LANDSAT_COMBINED,RunConfig
+from .config import LANDSAT_COMBINED,MODIS_COMBINED,RunConfig
 from .providers.http import ProviderError
 from .providers.cdse import discover,CDSE
 from .providers.sentinel2_windows import acquire_s2_windows
@@ -16,7 +16,7 @@ from .providers import agera5
 from .providers.hres import prepare_reference
 from .providers import earthdata,landsat as landsat_provider
 from .viirs import prepare_hdf
-from .modis import prepare_hdf as prepare_modis
+from .modis import DOMAINS as MODIS_DOMAINS,prepare_hdf as prepare_modis
 from .landsat import prepare_assets
 from .sentinel2 import prepare_safe
 from .raster import predict_rasters
@@ -42,8 +42,11 @@ def plan(config):
              'modis_aqua':'MYD09A1.061 six-band screen; native sinusoidal ~463m; published MODIS state QA',
              'viirs':'VNP09H1.002 I1/I2/I3; native sinusoidal ~463m; published state QA and 0<SR<1.6',
              'landsat_c2l2':'Collection 2 Tier-1 Level-2 SR B4/B5/B6; 30m; QA_PIXEL and QA_RADSAT'}
+    optical_plan=optical[config.product]
+    if config.product=='modis' and config.sensor==MODIS_COMBINED:
+        optical_plan='MOD09A1.061 / MYD09A1.061 six-band screen; native sinusoidal ~463m; published MODIS state QA'
     result=dict(product=config.product,sensor=config.sensor,date=config.day,bounds=list(config.bounds),tile=config.tile,
-                optical=optical[config.product],
+                optical=optical_plan,
                 rainfall_start=str(date.fromisoformat(config.day)-timedelta(days=84)),rainfall_end=config.day,
                 landcover=dict(source='WorldCover',year=config.landcover_year,policy=config.landcover_policy),
                 terrain='JAXA AW3D30 v4.1; source-grid four-neighbour authalic derivatives; exact nearest centres',
@@ -191,7 +194,6 @@ def _run_single(config,*,item=None):
     if config.product=='s2_l2a' and not access['cdse_s3'] and not access['cdse_oauth']: raise ProviderError('Configure CDSE S3 keys or OAuth credentials')
     if config.product in ('viirs','modis','modis_aqua') and not access['earthdata_config_present']:raise ProviderError('Configure Earthdata in external netrc or EARTHDATA_TOKEN/USERNAME/PASSWORD')
     if not access['cds_config_present']: raise ProviderError('Configure CDS credentials and accept AgERA5 terms')
-    request=plan(config);key=preparation_key(request)
     if item is None:
         products=discover_products(config)
         if config.product_ids:
@@ -202,6 +204,12 @@ def _run_single(config,*,item=None):
             raise ValueError(f'Found {len(products)} products; specify one product_id to avoid implicit scene or reprocessing selection')
         if len(products)!=1: raise ValueError('Initial workflow supports one product/granule per AOI/date')
         item=products[0]
+    if config.product=='modis' and config.sensor==MODIS_COMBINED:
+        domain=MODIS_DOMAINS.get(item['collection'].split('.',1)[0])
+        if domain is None or domain[1]!=item['sensor']:
+            raise ValueError('MODIS scene does not match the selected spacecraft')
+        config=replace(config,product=domain[0],sensor=domain[1])
+    request=plan(config);key=preparation_key(request)
     product=item
     identity=source_product_identity(config.product,product)
     output=scene_output(config,identity)

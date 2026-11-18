@@ -8,6 +8,7 @@ import math
 
 LANDSAT_COMBINED = 'L8/L9'
 SENTINEL3_COMBINED = 'S3A/S3B'
+MODIS_COMBINED = 'Terra/Aqua MODIS'
 
 
 @dataclass(frozen=True)
@@ -108,8 +109,9 @@ class RunConfig:
         if self.product in ('viirs','modis','modis_aqua'):
             import re
             if self.tile and not re.fullmatch(r'h\d{2}v\d{2}',self.tile):raise ValueError('Specify the optional sinusoidal tile as hXXvYY')
-            expected={'viirs':'Suomi NPP VIIRS','modis':'Terra MODIS','modis_aqua':'Aqua MODIS'}[self.product]
-            if self.sensor not in ('',expected):raise ValueError('Sensor must match the selected published product domain')
+            sensors={'viirs':('Suomi NPP VIIRS',),'modis':('Terra MODIS',MODIS_COMBINED),
+                     'modis_aqua':('Aqua MODIS',)}[self.product]
+            if self.sensor not in ('',*sensors):raise ValueError('Sensor must match the selected published product domain')
             if self.composite_policy!='contains-analysis-date':raise ValueError('Eight-day products require explicit composite_policy: contains-analysis-date')
         elif self.composite_policy:
             raise ValueError('composite_policy applies only to eight-day products')

@@ -10,18 +10,19 @@ import subprocess
 import sys
 import uuid
 
-from .config import LANDSAT_COMBINED,SENTINEL3_COMBINED
+from .config import LANDSAT_COMBINED,MODIS_COMBINED,SENTINEL3_COMBINED
 
 PAPER_URL='https://doi.org/10.3390/rs18213744'
 LANDSAT_LABEL = 'Landsat 8 / 9'
 SENTINEL3_LABEL = 'Sentinel-3 SYNERGY'
-GROUPED_LABELS = {'landsat_c2l2': LANDSAT_LABEL, 's3syn300': SENTINEL3_LABEL}
+MODIS_LABEL = 'MODIS (Terra/Aqua)'
+GROUPED_LABELS = {'landsat_c2l2': LANDSAT_LABEL, 'modis': MODIS_LABEL,
+                  'modis_aqua': MODIS_LABEL, 's3syn300': SENTINEL3_LABEL}
 
 PRODUCTS={
     'Sentinel-2 L2A':('s2_l2a','',''),
     LANDSAT_LABEL:('landsat_c2l2',LANDSAT_COMBINED,''),
-    'Terra MODIS':('modis','Terra MODIS',''),
-    'Aqua MODIS':('modis_aqua','Aqua MODIS',''),
+    MODIS_LABEL:('modis',MODIS_COMBINED,''),
     'Suomi NPP VIIRS':('viirs','Suomi NPP VIIRS',''),
     SENTINEL3_LABEL:('s3syn300',SENTINEL3_COMBINED,'')}
 
@@ -127,6 +128,8 @@ def configuration_data(values):
     product,sensor,_=PRODUCTS[values['satellite']]
     if product in GROUPED_LABELS:
         sensor = values.get('configured_sensor', sensor)
+    if product=='modis' and sensor=='Aqua MODIS':
+        product='modis_aqua'
     day=values['day'].strip()
     end_day=values.get('end_day','').strip()
     maximum=parse_limit(values.get('max_cloud_cover'))
@@ -573,7 +576,9 @@ class Application:
             self._configured_sensor = None
         if product in GROUPED_LABELS and self._configured_sensor not in (None,default_sensor):
             sensor = self._configured_sensor
-            spacecraft = f'Landsat {sensor[-1]}' if product == 'landsat_c2l2' else f'Sentinel-3{sensor[-1]}'
+            if product=='modis':spacecraft=sensor
+            elif product=='landsat_c2l2':spacecraft=f'Landsat {sensor[-1]}'
+            else:spacecraft=f'Sentinel-3{sensor[-1]}'
             self.satellite_scope.configure(text=f'Configuration limits search to {spacecraft}. Select {label} again to search both.')
             self.satellite_scope.grid()
         else:
@@ -636,6 +641,8 @@ class Application:
             if config.product in GROUPED_LABELS:
                 label = GROUPED_LABELS[config.product]
                 self._configured_sensor = config.sensor
+                if not config.sensor and config.product in ('modis','modis_aqua'):
+                    self._configured_sensor = 'Aqua MODIS' if config.product=='modis_aqua' else 'Terra MODIS'
             else:
                 label=next(label for label,domain in PRODUCTS.items() if domain[:2]==(config.product,config.sensor) or not config.sensor and domain[0]==config.product)
                 self._configured_sensor = None

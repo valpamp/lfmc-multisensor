@@ -6,6 +6,7 @@ import re
 from urllib.parse import urlparse
 import requests
 
+from ..config import MODIS_COMBINED
 from .http import ProviderError,request,download
 from .cloud import annotate
 
@@ -21,7 +22,13 @@ def composite_interval(day):
 
 
 def discover(config):
-    short,version,sensor,extension=PRODUCTS[config.product]
+    if config.product=='modis' and config.sensor==MODIS_COMBINED:
+        return _discover_collection(config,'modis') + _discover_collection(config,'modis_aqua')
+    return _discover_collection(config,config.product)
+
+
+def _discover_collection(config,product):
+    short,version,sensor,extension=PRODUCTS[product]
     first,_=composite_interval(config.day);last,_=composite_interval(config.last_day);page=1;items=[];session=requests.Session()
     while True:
         response=request(session,'GET',CMR,params=dict(short_name=short,version=version,

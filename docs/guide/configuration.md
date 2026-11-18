@@ -119,13 +119,16 @@ no gap filling, nearby-date substitution or mosaicking is applied. See
 | --- | --- | --- | --- | --- |
 | Sentinel-2 L2A | `s2_l2a` | Read from selected SAFE | Optional MGRS, e.g. `32TMK`, without leading `T` | Exact UTC acquisition date |
 | Landsat 8 / 9 | `landsat_c2l2` | `L8/L9` for both, `L8` or `L9` for one | Optional six-digit WRS path/row, e.g. `193032` | Exact UTC acquisition date |
-| Terra MODIS | `modis` | `Terra MODIS` | Optional sinusoidal tile, e.g. `h18v04` | Explicit composite policy |
-| Aqua MODIS | `modis_aqua` | `Aqua MODIS` | Same optional convention | Explicit composite policy |
+| MODIS Terra/Aqua | `modis` | `Terra/Aqua MODIS` for both, `Terra MODIS` for Terra | Optional sinusoidal tile, e.g. `h18v04` | Explicit composite policy |
 | Suomi NPP VIIRS | `viirs` | `Suomi NPP VIIRS` | Same optional convention | Explicit composite policy |
 | Sentinel-3 | `s3syn300` | `S3A/S3B` for both, `S3A` or `S3B` for one | Empty | NTC collection 002, `.nc` output |
 
 Only calibrated spacecraft domains are accepted. NOAA VIIRS spacecraft and
 other products are not substituted for the published Suomi NPP domain.
+
+Existing Aqua-only configurations use `modis_aqua` with `Aqua MODIS`.
+The grouped MODIS setting preserves the Terra or Aqua calibration and source
+granule ID in each map.
 
 ## Eight-day composites
 

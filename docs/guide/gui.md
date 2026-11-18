@@ -108,6 +108,10 @@ Each selected Landsat scene uses its spacecraft's calibration. If a saved
 configuration specifies just one Landsat spacecraft, the form displays that
 restriction. Select **Landsat 8 / 9** again to search both.
 **Sentinel-3 SYNERGY** works the same way for Sentinel-3A and Sentinel-3B.
+**MODIS (Terra/Aqua)** searches both spacecraft. Scene IDs start with
+`MOD09A1` for Terra and `MYD09A1` for Aqua. A saved spacecraft-specific
+configuration keeps its original search scope. Select **MODIS (Terra/Aqua)**
+again to search both.
 
 Enter the actual acquisition date for Sentinel-2, Landsat or Sentinel-3.
 For MODIS/VIIRS, enter the analysis

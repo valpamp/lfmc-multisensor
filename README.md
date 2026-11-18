@@ -34,8 +34,7 @@ required or used.
 | --- | --- | --- | --- |
 | Sentinel-2 L2A | `s2_l2a` | 20 m; red reflectance averaged from 10 m | GeoTIFF |
 | Landsat 8/9 Collection 2 Tier-1 L2 | `landsat_c2l2`, sensor `L8/L9`, `L8`, or `L9` | Native 30 m | GeoTIFF |
-| Terra MOD09A1.061 | `modis`, sensor `Terra MODIS` | Native sinusoidal, about 463 m; nominal 500 m | GeoTIFF |
-| Aqua MYD09A1.061 | `modis_aqua`, sensor `Aqua MODIS` | Same native grid | GeoTIFF |
+| MODIS Terra/Aqua (MOD09A1.061 / MYD09A1.061) | `modis`, sensor `Terra/Aqua MODIS` | Native sinusoidal, about 463 m; nominal 500 m | GeoTIFF |
 | Suomi NPP VIIRS VNP09H1.002 | `viirs`, sensor `Suomi NPP VIIRS` | Native sinusoidal, about 463 m; nominal 500 m | GeoTIFF |
 | Sentinel-3 SY_2_SYN NTC collection 002 | `s3syn300`, sensor `S3A/S3B`, `S3A`, or `S3B` | Native curved grid with per-pixel coordinates | NetCDF |
 
@@ -43,6 +42,9 @@ MODIS and VIIRS use eight-day composites. Their configured date selects the
 weather and calendar predictors within an explicitly selected composite interval;
 the reflectance can include observations after that date. Sentinel-2, Landsat
 and Sentinel-3 use an actual acquisition date.
+
+The grouped MODIS option searches both Terra and Aqua and produces a separate
+map for each selected granule using its spacecraft's calibration.
 
 Optional weather downscaling follows the appendix case-study methodology.
 It is **off by default** and uses a documented approximation of the weather
@@ -177,6 +179,14 @@ no more than one degree across, within 60 degrees south to 60 degrees north.
 Geographic coverage, processing baselines and operating systems beyond the
 documented examples need further validation. This is retrospective inference;
 the examples do not establish real-time availability or independent field accuracy.
+
+## Project updates and feedback
+
+Further research may lead to updates to the LFMC models. Planned work
+includes validated support for Sentinel-2C, Sentinel-3C
+and additional satellites. We welcome reports from researchers and fire
+managers, including results from new study areas and suggestions for improving
+the workflow. [Share feedback on GitHub](https://github.com/valpamp/lfmc-multisensor/issues)
 
 ## License & Commercial Use
 

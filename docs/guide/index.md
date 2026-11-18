@@ -40,3 +40,10 @@ Downloads can be substantial even for a small area because some
 products require complete source assets. Keep the cache for subsequent runs.
 Accounts and model files belong on your machine; they are not supplied by a
 documentation website.
+
+## Project updates and feedback
+
+Further research may lead to updates to the LFMC models. Planned work
+includes validated support for Sentinel-2C, Sentinel-3C
+and additional satellites. Feedback from researchers, fire managers and other
+users is welcome. [Share feedback on GitHub](https://github.com/valpamp/lfmc-multisensor/issues)
