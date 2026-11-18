@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/installation/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Installation - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../gui/" class="nav-link">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../configuration/" class="nav-link">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../statistics/" class="nav-link">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../method-and-validation/" class="nav-link">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../troubleshooting/" class="nav-link">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../accounts/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/installation.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#install-and-check-the-environment" class="nav-link">Install and check the environment</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#clone-the-repository" class="nav-link">Clone the repository</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#tested-windows-installation" class="nav-link">Tested Windows installation</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#supply-the-published-models" class="nav-link">Supply the published models</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#desktop-interface" class="nav-link">Desktop interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="install-and-check-the-environment">Install and check the environment</h1>
+<p>Use Conda to provide Python and the geospatial libraries together. On Windows,
+activating the environment also sets the paths needed by GDAL and other native
+libraries. Calling an environment's <code>python.exe</code> directly does not provide the
+same setup.</p>
+<h2 id="clone-the-repository">Clone the repository</h2>
+<p>Install Git and <a href="https://git-lfs.com/">Git LFS</a>, then run <code>git lfs install</code> once
+before cloning. On the GitHub project page, copy the HTTPS clone URL from
+<strong>Code</strong> and run <code>git clone</code> with that URL. Git LFS retrieves the three model
+files into <code>model-assets/</code> as part of checkout, about 628 MB in total. A
+public clone requires no model-host account or access request.</p>
+<p>If you already cloned the project and the model files are tiny pointer files,
+run <code>git lfs pull</code> from the repository folder. Use a Git LFS checkout for the
+installation.</p>
+<h2 id="tested-windows-installation">Tested Windows installation</h2>
+<ol>
+<li>Install <a href="https://github.com/conda-forge/miniforge#windows">Miniforge for Windows x86_64</a>
+   if Conda is unfamiliar or absent. An existing Conda installation also works.</li>
+<li>Open <strong>Miniforge Prompt</strong>
+   from the Windows Start menu, or open the prompt for your existing Conda
+   installation. Change to the cloned folder. For example, in that prompt
+   run <code>cd /d "C:\path\to\lfmc-multisensor"</code>.</li>
+<li>Run these commands in that prompt.</li>
+</ol>
+<pre><code class="language-text">conda create -n lfmc-multisensor --file environment-win64.lock.txt
+conda activate lfmc-multisensor
+python -m pip install --require-hashes --no-deps -r requirements-statistics-win64.lock.txt
+python -m pip install --no-deps --no-build-isolation .
+python -m pip check
+</code></pre>
+<p>The explicit Conda file fixes the tested Windows package builds. The supplemental
+pip file supplies the HDF4 reader used by Terra/Aqua MODIS and the polygon AOI
+readers used by the GUI and shapefile configurations, plus Matplotlib and its
+plotting dependencies for AOI statistics. The statistics lock includes the
+workflow lock; CLI installations without figures can use
+<code>requirements-workflow-win64.lock.txt</code> instead. Installing this
+repository adds the <code>lfmc-multisensor</code> command. The lock includes build tools, so
+the installation can use them without creating a separate build environment.</p>
+<p>Check which environment is running:</p>
+<pre><code class="language-text">python -c &quot;import sys, numpy, rasterio; print(sys.prefix); print(numpy.__version__); print(rasterio.__version__)&quot;
+python -m lfmc_multisensor.cli plan examples/sentinel2_2021.json
+</code></pre>
+<p>The printed prefix should identify the environment you just activated. The plan
+command does not download data. If a terminal cannot retain activation, use
+Conda to launch each command:</p>
+<pre><code class="language-text">conda run --no-capture-output -n lfmc-multisensor python -m lfmc_multisensor.cli plan examples/sentinel2_2021.json
+</code></pre>
+<h2 id="supply-the-published-models">Supply the published models</h2>
+<p>The checkout includes all three LFMC model bundles from model set <strong>1.0.0</strong>:</p>
+<pre><code class="language-text">model-assets/
+  best_Grass_gapfill_within_site.joblib
+  best_Shrub_gapfill_within_site.joblib
+  best_Tree_gapfill_within_site.joblib
+</code></pre>
+<p>The example configurations already refer to this directory. To use another
+location, change <code>models_dir</code> in the configuration. Paths are resolved relative
+to the configuration file, including when you run the CLI from another directory.</p>
+<p>In the GUI, select the <code>model-assets</code> folder and click <strong>Check models</strong> before
+running the first map. The loader verifies the files' SHA-256 checksums and
+checks their contents. It requires scikit-learn <strong>1.9.0</strong>, which is included in
+the Windows environment above.</p>
+<p>Only load files from a trusted source. Joblib/Python model serialisation can
+execute code; a model file is not an inert data table.</p>
+<h2 id="desktop-interface">Desktop interface</h2>
+<p>After installation and provider setup, run <code>lfmc-multisensor gui</code> from the
+activated Conda terminal. The <a href="../gui/">GUI tutorial</a> walks through shapefile
+selection, scene discovery and prediction. Tkinter supplies the native widgets;
+the tested Windows Conda lock includes Tcl/Tk. A different Conda installation
+may need its matching <code>tk</code> package.</p>
+<p>On subsequent launches, open the Conda prompt, return to the repository folder,
+and run <code>conda activate lfmc-multisensor</code> before launching the GUI.</p>
+<p>The installation above was tested on Windows x64. Linux and macOS have yet to
+be independently tested and require platform-specific dependencies.</p>
+<p>Next, <a href="../accounts/">configure provider accounts</a>.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/method-and-validation/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Method and validation - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../gui/" class="nav-link">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../configuration/" class="nav-link">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../statistics/" class="nav-link">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../troubleshooting/" class="nav-link">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../statistics/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../troubleshooting/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/method-and-validation.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#what-the-workflow-estimates-and-what-has-been-tested" class="nav-link">What the workflow estimates and what has been tested</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#reflectance-and-vegetation-models" class="nav-link">Reflectance and vegetation models</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#weather-and-optional-elevation-adjustment" class="nav-link">Weather and optional elevation adjustment</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#land-cover-and-quality-screening" class="nav-link">Land cover and quality screening</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#evidence-available-for-this-candidate" class="nav-link">Evidence available for this candidate</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="what-the-workflow-estimates-and-what-has-been-tested">What the workflow estimates and what has been tested</h1>
+<p>The package applies the models from the
+<a href="https://doi.org/10.3390/rs18213744">published multisensor LFMC study</a>.
+For each eligible satellite location, it prepares reflectance, weather, terrain
+and seasonal predictors. Annual land cover selects the grass, shrub or tree
+model. The package puts the predictors in the order expected by that trained
+Random Forest, applies its stored scaling, and converts the model output back
+to LFMC as percent dry mass.</p>
+<h2 id="reflectance-and-vegetation-models">Reflectance and vegetation models</h2>
+<p>Product-specific screening removes missing or unsuitable optical observations.
+Reflectance is kept at the product's native support. Sentinel-2 uses B8A and B11
+at 20 m and averages red B4 from 10 m. MODIS and VIIRS keep their actual
+sinusoidal spacing. Sentinel-3 retains its per-pixel geolocation.</p>
+<p>Before calculating spectral indices, each vegetation model applies its own
+stored calibration for the selected non-reference sensor and spacecraft.
+Sentinel-2 is the reference product and follows its reference preprocessing.
+The package does not fit new calibration coefficients or train a new forest
+during inference. Missing calibration domains stop the run.</p>
+<p>The indices, seasonal terms, ordered predictors, scaler and inverse target
+transformation follow the stored published bundles. Predictions require all
+of a model's inputs to be finite. LFMC outputs are not clipped to an arbitrary
+percentage range.</p>
+<h2 id="weather-and-optional-elevation-adjustment">Weather and optional elevation adjustment</h2>
+<p>AgERA5 version 2 supplies daily weather on its native 0.1-degree grid. Its daily
+labels follow the provider's local-day convention. The package associates those
+labels with the configured analysis date, preserving the study's date convention;
+it does not reconstruct hourly weather at satellite overpass time. See the
+<a href="https://cds.climate.copernicus.eu/datasets/sis-agrometeorological-indicators?tab=overview">provider description</a>.
+Predictors
+include daily conditions and rainfall totals over the preceding 3, 7, 28 and
+84 days. Those antecedent totals exclude the analysis day; the daily rainfall
+predictor uses that day itself. Missing required history is not replaced by zero.</p>
+<p>By default, weather is interpolated to the satellite centres without the
+appendix elevation adjustment. Setting <code>downscale: true</code> applies the appendix
+constant-relative-humidity lapse methodology using local AW3D30 elevation and
+a reconstructed reference for the weather grid. That reference comes from a
+fixed historical field of the European Centre for Medium-Range Weather Forecasts'
+high-resolution (HRES) model. The reference is explicitly
+approximate: equivalence to the weather provider's exact terrain and requested
+date/cycle has not been verified. Both modes retain separate provenance.</p>
+<p>Terrain derivatives are calculated on the AW3D30 source grid before sampling.
+The optional adjustment changes weather predictors; it does not increase the
+resolution of the optical observation or establish a measured accuracy gain.</p>
+<h2 id="land-cover-and-quality-screening">Land cover and quality screening</h2>
+<p>Direct workflows use WorldCover 2021 by default, with 2020 selectable. The map
+year is independent of the acquisition year and remains fixed across a time
+series. Changes in land cover after that snapshot are not reconstructed.
+The dominant category is selected among all map classes; only tree, shrub and
+grass categories route to a model. Training-site neighbourhood and suitability
+filters are not imposed on arbitrary inference locations.</p>
+<p>Sentinel-3 aggregates class fractions over nominal 300 m central rectangles in
+local UTM coordinates. Its audited metadata-based QA excludes cloud, snow and
+specified retrieval failures. This screening is stricter than the older
+appendix example's mask. The historical replay preserves its original mask;
+it is not a claim that the current direct QA reproduces every historical pixel.
+Historical Dynamic World probabilities are not acquired by these direct workflows.</p>
+<h2 id="evidence-available-for-this-candidate">Evidence available for this candidate</h2>
+<p>Three checks answer different questions:</p>
+<ol>
+<li><strong>Saved-case replay:</strong> can extracted inference reproduce the saved appendix
+   outputs and masks for the checked Sentinel-2 and native Sentinel-3 cases?</li>
+<li><strong>Real-input reference comparison:</strong> do newly prepared inputs produce the same
+   predictors and predictions through the package and the trusted research helpers?</li>
+<li><strong>Installed-package exercise:</strong> does a built, non-editable package work outside
+   the research source tree, with the recorded environment and provider access?</li>
+</ol>
+<p>The exercised Sardinia examples include all eight sensor/spacecraft paths in
+both weather modes. Their original and adjusted runs produced these valid-pixel
+counts:</p>
+<table>
+<thead>
+<tr>
+<th>Example</th>
+<th>Acquisition or analysis date</th>
+<th>Valid pixels in each mode</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sentinel-2</td>
+<td>2021-07-22</td>
+<td>8,701</td>
+</tr>
+<tr>
+<td>Landsat 8</td>
+<td>2021-07-15</td>
+<td>3,047</td>
+</tr>
+<tr>
+<td>Landsat 9</td>
+<td>2021-11-18</td>
+<td>3,047</td>
+</tr>
+<tr>
+<td>Terra MODIS</td>
+<td>2021-07-22, composite 20-27 July</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Aqua MODIS</td>
+<td>2021-07-22, same composite</td>
+<td>6</td>
+</tr>
+<tr>
+<td>Suomi NPP VIIRS</td>
+<td>2021-07-22, same composite</td>
+<td>16</td>
+</tr>
+<tr>
+<td>Sentinel-3A</td>
+<td>2021-07-22</td>
+<td>42</td>
+</tr>
+<tr>
+<td>Sentinel-3B</td>
+<td>2021-07-21</td>
+<td>49</td>
+</tr>
+</tbody>
+</table>
+<p>The combined Windows check matched the baseline LFMC values and valid masks
+for all eight paths in both weather modes. Each original-mode path started
+with an empty provider cache. The downscaled paths reused the same
+checksum-verified historical weather reference. Later checks used cached
+inputs to verify polygon masking, the GUI and date-range processing.</p>
+<p>Reproducing software outputs is distinct from validating LFMC against independent
+field measurements. The small examples do not establish general geographic/date
+coverage, every processing baseline or operational real-time availability.
+Linux/macOS, additional land-cover maps, mosaics, and scientific accuracy of the
+optional weather adjustment remain outside the demonstrated scope.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

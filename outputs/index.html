@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/outputs/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Outputs - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../gui/" class="nav-link">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../configuration/" class="nav-link">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../statistics/" class="nav-link">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../method-and-validation/" class="nav-link">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../troubleshooting/" class="nav-link">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../configuration/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../statistics/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/outputs.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#read-the-map-quality-codes-and-provenance" class="nav-link">Read the map, quality codes and provenance</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#geotiff-products" class="nav-link">GeoTIFF products</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sentinel-3-netcdf" class="nav-link">Sentinel-3 NetCDF</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#model-versions-and-filename-labels" class="nav-link">Model versions and filename labels</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#time-series-outputs" class="nav-link">Time-series outputs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#provenance-and-comparisons" class="nav-link">Provenance and comparisons</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="read-the-map-quality-codes-and-provenance">Read the map, quality codes and provenance</h1>
+<p>LFMC is the mass of water in living vegetation expressed as a percentage of dry
+mass. Values can exceed 100%. These outputs are model estimates; they do not
+provide a separate uncertainty interval for each pixel.</p>
+<p>Always inspect the quality information alongside LFMC. No-data means that the
+workflow did not produce an eligible, complete prediction at that location.
+It must not be interpreted as zero moisture.</p>
+<p>The JSON request also records the optional cloud filter. Product provenance
+retains the provider-reported <code>cloud_cover</code> percentage and <code>cloud_cover_source</code>;
+a missing percentage is JSON <code>null</code>. These values describe the catalogue
+scene/granule, rather than cloud coverage or valid-pixel coverage within the AOI.</p>
+<p>New LFMC maps carry copyright, licence and usage restrictions as GeoTIFF tags
+or global NetCDF attributes. See the repository's <code>OUTPUT_TERMS.md</code> for terms
+on sharing maps and obtaining a commercial licence.</p>
+<h2 id="geotiff-products">GeoTIFF products</h2>
+<p>Sentinel-2, Landsat, MODIS and VIIRS write an LFMC raster, a QA raster, a dominant
+vegetation-class raster and a JSON record. For an output named <code>map.tif</code>, the
+companions are <code>map_qa.tif</code>, <code>map_vegetation.tif</code> and <code>map.json</code>. Keep all four
+together for statistics without the original input cache. The LFMC band is
+float32 with missing values stored as no-data.
+Its CRS and transform describe the native output grid.</p>
+<table>
+<thead>
+<tr>
+<th>QA value</th>
+<th>Meaning</th>
+<th>How to use it</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Valid LFMC estimate</td>
+<td>Include in analyses of predictions</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Land cover does not route to a grass, shrub or tree model, or routing support is invalid</td>
+<td>Treat as unpredicted</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Optical input is missing or rejected by product quality screening at a routed location</td>
+<td>Treat as unpredicted</td>
+</tr>
+<tr>
+<td>3</td>
+<td>A routed location has incomplete required predictors</td>
+<td>Inspect weather and terrain support</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Pixel centre is outside the selected polygon AOI</td>
+<td>Treat as unpredicted; the rectangular native grid is retained</td>
+</tr>
+<tr>
+<td>255</td>
+<td>Raster no-data marker</td>
+<td>Treat as unpredicted</td>
+</tr>
+</tbody>
+</table>
+<p>Each pixel has one reported reason. For example, non-routed land cover is
+recorded even when optical inputs are also missing. QA is not a confidence score
+or a probability that a valid prediction is accurate.</p>
+<h2 id="sentinel-3-netcdf">Sentinel-3 NetCDF</h2>
+<p>Sentinel-3 pixels lie on a curved two-dimensional geolocation grid. The <code>.nc</code>
+output keeps that geometry rather than assigning a constant affine transform.
+The companion <code>.json</code> file records provenance.</p>
+<table>
+<thead>
+<tr>
+<th>Variable</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>LFMC</code></td>
+<td>Moisture estimate, float32, percent dry mass</td>
+</tr>
+<tr>
+<td><code>QA</code></td>
+<td>Quality reason; codes 0-3 as above, plus 4 outside the requested bounding box or polygon AOI</td>
+</tr>
+<tr>
+<td><code>lat</code>, <code>lon</code></td>
+<td>Two-dimensional decoded source coordinates</td>
+</tr>
+<tr>
+<td><code>source_row</code>, <code>source_column</code></td>
+<td>Indices in the original source scene</td>
+</tr>
+<tr>
+<td><code>dominant_class</code></td>
+<td>Dominant WorldCover code over the nominal central support</td>
+</tr>
+<tr>
+<td><code>landcover_support_fraction</code></td>
+<td>Fraction of that support represented by valid land-cover inputs</td>
+</tr>
+</tbody>
+</table>
+<p>The native rectangular subset includes a two-cell halo. Halo centres outside
+the requested bounds have QA code 4 and no LFMC prediction. The recorded support
+fraction is diagnostic; no new training-suitability threshold is applied to it.</p>
+<pre><code class="language-python">import xarray as xr
+
+with xr.open_dataset(&quot;outputs/sentinel3a_2021.nc&quot;) as data:
+    valid_lfmc = data[&quot;LFMC&quot;].where(data[&quot;QA&quot;] == 0)
+    print(valid_lfmc.count().item())
+    print(data[&quot;lat&quot;].shape, data[&quot;lon&quot;].shape)
+</code></pre>
+<p>Use the latitude/longitude arrays when displaying or comparing native S3 data.
+A regular-grid GeoTIFF export would require an explicit resampling choice and
+is not implemented in this candidate.</p>
+<h2 id="model-versions-and-filename-labels">Model versions and filename labels</h2>
+<p>Every newly generated LFMC GeoTIFF and its QA companion store
+<code>LFMC_MODEL_SET_VERSION</code>, <code>LFMC_MODEL_VERSION_GRASS</code>,
+<code>LFMC_MODEL_VERSION_SHRUB</code> and <code>LFMC_MODEL_VERSION_TREE</code> as metadata tags.
+The corresponding model SHA256 tags bind those versions to exact artefact
+bytes. Native Sentinel-3 NetCDF stores the same fields as global attributes.
+<code>LFMC_OUTPUT_LABEL</code> records the selected filename label.</p>
+<p>Maps use <code>&lt;label&gt;_&lt;source-product&gt;_LFMC_v01.&lt;extension&gt;</code>. The original
+Sentinel-2 and Sentinel-3 names retain their acquisition timestamps and baseline
+tokens. Landsat uses the full USGS Level-2 identifier, including its processing
+date when available from the source asset. MODIS and VIIRS preserve the native
+granule identifier and append <code>Ayyyymmdd</code> for the analysis date, which can
+differ from the start of the composite. QA, vegetation, and provenance
+companions use the same map stem.</p>
+<p>GeoTIFF tags and NetCDF global attributes include <code>LFMC_MODEL_MAP_VERSION</code>,
+<code>LFMC_PAPER_DOI</code>, <code>LFMC_PAPER_URL</code>, and <code>LFMC_SOURCE_PRODUCT_NAME</code> for
+maps created from a provider scene. Additional source tags record its catalogue
+identifier and its native baseline or collection when identifiable.</p>
+<p>The JSON provenance and time-series manifest include <code>model_provenance</code>, with
+the model-set identity/version and each vegetation model's version and SHA256.
+Existing <code>model_sha256</code> records are retained in per-map provenance. The current
+set and all three models are <strong>1.0.0</strong>, assigned to the already published
+weights without changing their contents. These versions are independent of
+the package version. Existing old outputs are not modified retroactively.</p>
+<pre><code class="language-python">import rasterio
+
+with rasterio.open(&quot;outputs/Forest reserve_&lt;source-product&gt;_LFMC_v01.tif&quot;) as data:
+    print(data.tags()[&quot;LFMC_MODEL_SET_VERSION&quot;])
+    print(data.tags()[&quot;LFMC_MODEL_VERSION_TREE&quot;])
+</code></pre>
+<p>The loader verifies each bundle's checksum against the published model manifest
+before loading it.</p>
+<h2 id="time-series-outputs">Time-series outputs</h2>
+<p>Setting an end date writes separate native maps for matching scenes. The
+additional <code>&lt;prefix&gt;_timeseries.json</code> manifest lists
+completed maps, dates, selected inputs and status. It is updated after each map,
+so earlier completed results remain available if a later scene fails.</p>
+<p>These files are a collection of native maps, rather than a regridded temporal
+cube. Scene footprints, grids and valid pixels can differ. There is no temporal
+interpolation, compositing across separate scenes or automatic gap filling.
+WorldCover remains at the selected fixed reference year throughout the series.</p>
+<p>The optional <a href="../statistics/">AOI statistics</a> add tables and mean/median figures,
+overall or by vegetation class. They can also be generated from saved outputs
+without repeating inference. Spatial spread bands are distinct from the
+optional exploratory intervals for paired-date vegetation contrasts.</p>
+<h2 id="provenance-and-comparisons">Provenance and comparisons</h2>
+<p>The JSON record identifies the optical source, date or composite interval,
+land-cover policy, weather mode, model identities and checksums of inputs and
+outputs. Preserve it when sharing a map. It allows another run to distinguish
+a changed source scene, model or processing choice from a numerical discrepancy.</p>
+<p>Output pixel spacing describes the satellite grid. Weather starts from the
+native AgERA5 grid, and terrain starts from AW3D30. Interpolation and optional
+weather adjustment do not turn those inputs into independent measurements at
+every satellite pixel. Comparisons between sensors must also account for their
+different footprints, dates, composite intervals and masks.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

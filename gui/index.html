@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/gui/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Desktop GUI - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../configuration/" class="nav-link">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../statistics/" class="nav-link">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../method-and-validation/" class="nav-link">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../troubleshooting/" class="nav-link">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../accounts/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../tutorial/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/gui.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#use-the-desktop-interface" class="nav-link">Use the desktop interface</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#start-the-application" class="nav-link">Start the application</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#1-choose-the-area" class="nav-link">1. Choose the area</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#2-select-a-satellite-dates-and-worldcover-map" class="nav-link">2. Select a satellite, dates and WorldCover map</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#3-select-models-cache-and-output" class="nav-link">3. Select models, cache and output</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#4-inspect-discover-and-run" class="nav-link">4. Inspect, discover and run</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#cancel-and-recover" class="nav-link">Cancel and recover</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#aoi-summaries-and-figures" class="nav-link">AOI summaries and figures</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="use-the-desktop-interface">Use the desktop interface</h1>
+<p>The desktop GUI provides file pickers and a form for the same inference workflow
+used by the command line. Shapefile selection is the default way to define the
+area of interest. You can also enter a longitude/latitude bounding box or
+define a circle or square around a point.
+Processing runs locally in your Conda environment. The documentation website
+does not run models or collect provider credentials.</p>
+<h2 id="start-the-application">Start the application</h2>
+<p>Complete installation, configure provider access and obtain the trusted model
+bundles first. In an activated Conda terminal, run:</p>
+<pre><code class="language-text">lfmc-multisensor gui
+</code></pre>
+<p>Alternatively, use <code>lfmc-multisensor-gui</code> or
+<code>python -m lfmc_multisensor.gui</code>. Use the current installed package so that it
+includes the GUI and polygon dependencies. Tkinter/Tcl/Tk supplies the desktop
+widgets; the provided Conda installation includes Tk. Other installations may
+need the matching Conda <code>tk</code> package.</p>
+<p>Select the folder containing the three model files and click <strong>Check models</strong>
+before starting a download.</p>
+<h2 id="1-choose-the-area">1. Choose the area</h2>
+<p>Select <strong>Shapefile / polygon file</strong> and browse to a <code>.shp</code> file. Keep its <code>.shx</code>,
+<code>.dbf</code> and <code>.prj</code> components beside it with the same base name. The <code>.prj</code> must
+declare the coordinate reference system. The loader does not guess a missing
+CRS. WGS84 GeoJSON polygons are also accepted.</p>
+<p>All polygon features are combined into one area. Interior holes and disconnected
+parts are retained. A projected shapefile is reprojected to WGS84 for discovery
+and masking. Invalid, empty or non-polygon features stop validation with a
+message; they are not silently dropped or repaired.</p>
+<p>The bounding rectangle limits acquisition and determines the native raster
+window. A prediction is retained only when its pixel centre lies on or inside
+the polygon union; hole interiors are excluded. The saved grid remains native,
+with no-data outside the selected polygons. Input footprints are not reshaped
+or resampled to make polygon boundaries look smoother.</p>
+<p>To try the supplied example, load <code>examples/sentinel2_shapefile_2021.json</code> using
+<strong>Load configuration</strong>. Its manually drawn Sardinia AOI includes a cut corner
+and a small hole to demonstrate masking. It is not a field-site or fire-perimeter
+dataset. Replace the models/cache/output paths for your installation.</p>
+<p>For a simple rectangle, choose <strong>Bounding box (WGS84)</strong> and enter west, south,
+east and north. Coordinates are longitude/latitude degrees. Original bounding-box
+configurations continue to work.</p>
+<p>To create an AOI on the fly, choose <strong>Point and radius</strong>. Enter <strong>latitude</strong>
+and <strong>longitude</strong> in WGS84 decimal degrees, then <strong>Radius (km)</strong>. For example,
+latitude <code>40.01</code>, longitude <code>8.76</code> and radius <code>0.75</code> define a circle extending
+750 metres from the point. The value is a radius, not a diameter. The application
+constructs a polygon from 720 boundary points at that distance on the WGS84
+ellipsoid; it does not buffer longitude/latitude degrees as if they were metres.
+Pixel centres inside this polygon are retained on the satellite's native grid.</p>
+<p>The point and radius are stored directly in saved configurations, so no extra
+shapefile or GeoJSON is needed. Reloading restores this selection. Zero,
+negative or non-finite radii are rejected, as are circles crossing the
+antimeridian or exceeding the existing geographic and one-degree area limits.
+Reduce the radius if the plan reports an unsupported extent. A very small
+circle may contain no pixel centres on a coarse satellite grid.</p>
+<p>For a square, choose <strong>Point and square</strong> and enter its centre latitude,
+longitude and <strong>Side (km)</strong>. A side of <code>1.5</code> creates a 1.5 by 1.5 km area;
+this value is the full side length, not a radius or half-width. The square is
+aligned east/north in a local metric projection centred on the point. Its
+boundary is transformed to WGS84 for discovery and native pixel-centre masking.
+The same geographic and area limits apply to the whole square. Both circle
+and square settings are preserved when saving and loading a configuration.</p>
+<h2 id="2-select-a-satellite-dates-and-worldcover-map">2. Select a satellite, dates and WorldCover map</h2>
+<p><strong>Max cloud (%)</strong> optionally limits discovery to scenes at or below a percentage
+between 0 and 100. Leave it blank for an unrestricted search. <strong>Include unknown
+cloud cover</strong> retains scenes without a usable catalogue percentage when a maximum
+is set; otherwise those scenes are excluded. Without a maximum, all scenes remain
+eligible, including those with missing percentages.</p>
+<p>The scene selection window shows a <strong>Cloud (%)</strong> column, with <strong>N/A</strong> for missing
+values. Click its heading to sort, or use <strong>Apply list filter</strong> to narrow the
+returned scenes before selecting them. Percentages are displayed to two decimal
+places; filtering uses the original precision and includes the maximum itself.
+The chosen list filter is saved in the main form and applied again during Run.
+Changing the main cloud settings clears previous scene selections. To recover
+scenes excluded by the original search, widen its limit and search again.</p>
+<p>Cloud percentages describe the provider's whole scene or granule, rather than
+the selected AOI. They do not replace pixel quality masks. Sentinel-2 and
+Sentinel-3 use the CDSE <code>cloudCover</code> attribute when available; Landsat uses STAC
+<code>eo:cloud_cover</code>; MODIS/VIIRS use CMR <code>cloud_cover</code>. Some products, especially
+composites, have no usable percentage and will show N/A. Missing, invalid or
+ambiguous metadata is never interpreted as zero cloud.</p>
+<p>These metadata definitions are documented by
+<a href="https://documentation.dataspace.copernicus.eu/APIs/OData.html">CDSE</a>,
+<a href="https://github.com/stac-extensions/eo">STAC EO</a> and
+<a href="https://cmr.earthdata.nasa.gov/search/site/docs/search/api.html">NASA CMR</a>.</p>
+<p>Choose the product from the menu. <strong>Landsat 8 / 9</strong> searches both spacecraft.
+Each selected Landsat scene uses its spacecraft's calibration. If a saved
+configuration specifies just one Landsat spacecraft, the form displays that
+restriction. Select <strong>Landsat 8 / 9</strong> again to search both.
+<strong>Sentinel-3 SYNERGY</strong> works the same way for Sentinel-3A and Sentinel-3B.</p>
+<p>Enter the actual acquisition date for Sentinel-2, Landsat or Sentinel-3.
+For MODIS/VIIRS, enter the analysis
+date and explicitly confirm use of the containing eight-day composite. Such a
+composite can include observations after the analysis date.</p>
+<p>Enter the date in <strong>Single / start date (UTC)</strong>. Leave <strong>End date (optional)</strong>
+blank to search from 00:00 through 23:59 of that one day, including its final
+seconds. Set an end date to search the complete inclusive interval. A range
+run writes one native map per matching scene using each acquisition's own
+weather date. End dates before the start date are rejected. Setting the same
+start and end date enables a range run over all matching scenes on that day.</p>
+<p>The <strong>WorldCover map</strong> defaults to <strong>2021</strong>, even for a request in 2023 or
+another acquisition year. Select <strong>2020</strong> for the alternative snapshot. The
+chosen map stays fixed across the time series; additional maps are future work.</p>
+<p>For MODIS/VIIRS ranges, each overlapping eight-day granule is processed once.
+The first composite uses the requested start date for weather; later composites
+use their start dates. A final composite can include observations after the end
+date. Keep the explicit composite confirmation selected when using these products.</p>
+<p>The tile/WRS filter is optional. It can narrow discovery when you know the
+desired grid, but you can search from the area and date without supplying one.
+Sentinel-3 uses no tile filter. Each output remains a single scene/granule,
+with areas no more than one degree across within 60 degrees south to 60 degrees
+north. Polygon or date-range selection does not enable mosaicking. Actual
+optical and weather availability still determine which dates can be processed.</p>
+<h2 id="3-select-models-cache-and-output">3. Select models, cache and output</h2>
+<p>Choose the directory containing the three authorised model bundles, a cache
+directory and a new output path. Most products write <code>.tif</code>; Sentinel-3 writes
+<code>.nc</code> with two-dimensional coordinates. Switching products updates the expected
+extension. Existing final outputs are protected from replacement.</p>
+<p><strong>Filename label</strong> sets the prefix before the source product ID and the
+<code>_LFMC_v01</code> suffix. Selecting <code>Forest reserve.shp</code> defaults the label to
+<code>Forest reserve</code>. The output selection sets the directory and extension.
+The label follows changes to the selected file until you edit it. Your custom
+label then stays in place; <strong>Use AOI name</strong> restores the automatic default.
+Choosing or editing an output filename also updates the label. Saved
+configurations preserve the chosen label. There is no required <code>test</code> prefix.</p>
+<p>For a time series, choosing <code>lfmc.tif</code> also writes <code>lfmc_timeseries.json</code>. The
+manifest updates as each scene completes; it links the individual maps and
+their provenance.</p>
+<p>Generated maps record the model-set version and the individual grass, shrub
+and tree model versions. The current published weights are registered as
+<strong>1.0.0</strong>; this labels the existing weights and does not retrain them. See
+the <a href="../outputs/">output metadata guide</a> for the tags and provenance fields.</p>
+<p>Leave the optional weather adjustment unchecked for the default weather mode.
+Selecting it applies the appendix methodology using the labelled historical
+reference approximation. It does not change the satellite grid or establish
+an improvement in field accuracy.</p>
+<h2 id="4-inspect-discover-and-run">4. Inspect, discover and run</h2>
+<ul>
+<li><strong>Plan</strong> validates the form and explains the inputs without contacting providers.
+  For a polygon, its CRS, bounds, feature count and file fingerprints identify
+  the selected AOI.</li>
+<li><strong>Check access</strong> reports the presence of external provider configuration. It
+  does not prove that credentials or dataset terms are valid.</li>
+<li><strong>Check models</strong> verifies bundle hashes and compatibility before a download.</li>
+<li><strong>Find scenes</strong> queries the requested area/date. One matching scene is selected
+  automatically. For a single date, choose one if several match. For a range,
+  choose multiple scenes or use <strong>Select all</strong>. Leaving scene IDs empty in
+  range mode processes all matches. No ranking or mosaic is applied.</li>
+<li><strong>Run</strong> checks the models, downloads/prepares inputs and predicts. Progress
+  messages and errors appear in the log while the form stays responsive.
+  Sentinel-2 over CDSE S3 reports the MB transferred for native AOI windows.
+  Its activity bar animates while files are read because the compressed bytes
+  needed by each window are only known as the reads complete.
+  For Sentinel-3 over CDSE S3, the progress bar and status show the current file and the MB
+  transferred across the files still needed for that scene. Verified cached
+  files are reused. The bar returns to its activity animation when processing
+  continues after the download.</li>
+</ul>
+<p>Sentinel-3 downloads the required geolocation, reflectance, QA, and manifest
+files for the selected swath. Cropping to the AOI happens locally after
+acquisition, so the first download can be sizeable even for a small circle.</p>
+<p>Changing either date clears old scene selections. If you change the area or
+satellite, find scenes again. A stale explicit
+scene ID is rejected if it does not belong to the new catalogue request.</p>
+<p><strong>Save configuration</strong> writes a reusable JSON request without credentials.
+<strong>Load configuration</strong> restores the form, including polygon, point/radius or
+bounding-box mode.
+The run's request and log are stored under the selected cache's <code>gui_requests</code>
+directory. Outputs retain the normal QA and provenance companions.</p>
+<h2 id="cancel-and-recover">Cancel and recover</h2>
+<p><strong>Cancel</strong> stops the local worker. Keep the same cache folder when retrying
+a cancelled, interrupted or failed run. The next run reuses verified inputs
+and restarts any incomplete download from the beginning of that asset.</p>
+<ul>
+<li><strong>One scene.</strong> Correct the error and click <strong>Run</strong> again. Use a new output
+  label if the earlier attempt created any output files.</li>
+<li><strong>Date range.</strong> Open the previous <code>*_timeseries.json</code> in a text editor. Its
+  <code>maps</code> list contains the completed scene IDs and outputs, even if the status
+  still says <code>running</code> after a hard stop. Use <strong>Find scenes</strong> and select the
+  remaining scenes, leave the cache folder unchanged, and choose a new output
+  label. This starts a second series and preserves the first series. Running
+  the original full selection again would also predict the completed scenes.</li>
+<li><strong>Only statistics failed.</strong> Open <strong>Statistics options / saved maps…</strong> and
+  use <strong>Analyse saved outputs</strong> with a fresh statistics label.</li>
+</ul>
+<p>Some corrupt weather-cache entries require the manual check in
+<a href="../troubleshooting/#an-optical-transfer-was-interrupted">troubleshooting</a>.</p>
+<p>The GUI starts one task at a time and limits its worker's CPU/thread settings.
+Provider requests can still wait in a remote queue. A native-library failure
+in the worker is reported as a failed exit; it does not run inference inside
+the GUI event loop.</p>
+<p>The <strong>Pampanoni et al. (2026)</strong> link at the bottom right opens the paper's DOI
+page in your default web browser. It also works with keyboard focus and Enter.
+The footer remains visible while the form can scroll on smaller windows.</p>
+<h2 id="aoi-summaries-and-figures">AOI summaries and figures</h2>
+<p>Select <strong>Calculate AOI statistics and figures after mapping</strong> for automatic
+summaries. <strong>Statistics options / saved maps…</strong> lets you choose median or mean,
+vegetation groups and available/common pixel support. It also provides
+<strong>Analyse saved outputs</strong>, which reads a completed series or map using the
+current AOI and filename label. This analysis needs no provider access or model
+loading. See the <a href="../statistics/">statistics tutorial</a> for figures, coverage,
+older-map compatibility and optional exploratory vegetation contrasts.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/configuration/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Configuration - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../gui/" class="nav-link">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../statistics/" class="nav-link">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../method-and-validation/" class="nav-link">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../troubleshooting/" class="nav-link">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../tutorial/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../outputs/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/configuration.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#choose-the-area-date-and-satellite" class="nav-link">Choose the area, date and satellite</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#shared-settings" class="nav-link">Shared settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#single-days-and-inclusive-date-ranges" class="nav-link">Single days and inclusive date ranges</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#product-specific-settings" class="nav-link">Product-specific settings</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#eight-day-composites" class="nav-link">Eight-day composites</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#scene-selection-and-repeated-runs" class="nav-link">Scene selection and repeated runs</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="choose-the-area-date-and-satellite">Choose the area, date and satellite</h1>
+<p>A JSON configuration makes the inference choices explicit and keeps credentials
+separate from the request. Begin with the example for your satellite. Paths are
+resolved relative to that JSON file.</p>
+<p>Use relative paths or explicit absolute paths; <code>~</code> is not expanded. In Windows
+JSON paths, use forward slashes or escape each backslash as <code>\\</code>.</p>
+<h2 id="shared-settings">Shared settings</h2>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>aoi_path</code></td>
+<td>Polygon shapefile, or WGS84 GeoJSON; the primary file-based AOI option</td>
+</tr>
+<tr>
+<td><code>aoi_circle</code></td>
+<td>Alternative point/radius object with <code>latitude</code>, <code>longitude</code> and <code>radius_km</code></td>
+</tr>
+<tr>
+<td><code>aoi_square</code></td>
+<td>Alternative point/square object with <code>latitude</code>, <code>longitude</code> and full <code>side_km</code></td>
+</tr>
+<tr>
+<td><code>bounds</code></td>
+<td>Alternative <code>[west, south, east, north]</code> in WGS84 longitude/latitude degrees</td>
+</tr>
+<tr>
+<td><code>day</code></td>
+<td><code>YYYY-MM-DD</code>; single/start date, beginning at 00:00 UTC</td>
+</tr>
+<tr>
+<td><code>end_day</code></td>
+<td>Optional inclusive end date; omit or leave empty for a single day</td>
+</tr>
+<tr>
+<td><code>max_cloud_cover</code></td>
+<td>Optional inclusive maximum catalogue cloud percentage, 0–100; <code>null</code> (default) means no limit</td>
+</tr>
+<tr>
+<td><code>include_unknown_cloud</code></td>
+<td>With a maximum set, retain scenes whose percentage is unavailable; defaults to <code>false</code></td>
+</tr>
+<tr>
+<td><code>product</code></td>
+<td>Optical product identifier; omitted only for the default <code>s2_l2a</code></td>
+</tr>
+<tr>
+<td><code>sensor</code></td>
+<td>Explicit spacecraft/domain where required; see below</td>
+</tr>
+<tr>
+<td><code>landcover_year</code></td>
+<td>Defaults to 2021; 2020 is also available, independently of acquisition year</td>
+</tr>
+<tr>
+<td><code>landcover_policy</code></td>
+<td>Defaults to <code>fixed-year</code>; older <code>same-year-annual</code> requests are migrated to this policy</td>
+</tr>
+<tr>
+<td><code>models_dir</code></td>
+<td>Directory holding the three trusted published bundles</td>
+</tr>
+<tr>
+<td><code>cache_dir</code></td>
+<td>Directory for reusable source inputs and prepared files</td>
+</tr>
+<tr>
+<td><code>output</code></td>
+<td>Directory, default filename label, and extension (<code>.tif</code> for affine grids or <code>.nc</code> for Sentinel-3)</td>
+</tr>
+<tr>
+<td><code>output_label</code></td>
+<td>Optional editable filename prefix; defaults to the polygon file's stem, otherwise the output's existing stem</td>
+</tr>
+<tr>
+<td><code>statistics</code></td>
+<td>Generate AOI statistics and figures after mapping; defaults to <code>false</code></td>
+</tr>
+<tr>
+<td><code>statistics_by_vegetation</code></td>
+<td>Also summarise Grass, Shrub and Tree; defaults to <code>true</code></td>
+</tr>
+<tr>
+<td><code>statistics_centre</code></td>
+<td>Figure line: <code>median</code> (default) or <code>mean</code>; the CSV contains both</td>
+</tr>
+<tr>
+<td><code>statistics_support</code></td>
+<td><code>available</code> (default) or <code>common</code> valid native pixels</td>
+</tr>
+<tr>
+<td><code>statistics_comparisons</code></td>
+<td>Optional exploratory paired-date intervals; defaults to <code>false</code>; requires common support and vegetation groups</td>
+</tr>
+<tr>
+<td><code>statistics_block_length</code></td>
+<td>Temporal block length in dates; default 3</td>
+</tr>
+<tr>
+<td><code>statistics_source</code></td>
+<td>Saved series manifest or LFMC output to analyse with the <code>statistics</code> command</td>
+</tr>
+<tr>
+<td><code>downscale</code></td>
+<td>Optional weather adjustment; defaults to <code>false</code></td>
+</tr>
+<tr>
+<td><code>product_ids</code></td>
+<td>One selected scene for a single day; optional subset of scenes in range mode, otherwise all matches</td>
+</tr>
+</tbody>
+</table>
+<p>The initial adapters accept non-crossing areas no more than one degree across,
+within 60 degrees south to 60 degrees north. Each map handles one scene or granule;
+a time series processes the matching scenes sequentially as separate maps.
+For affine products, an AOI crossing the selected source grid is rejected.
+Sentinel-3 records the native centres inside the requested area; the selected
+scene may cover only part of it. There is no automatic multi-scene mosaic.</p>
+<p>Set <strong>one of <code>aoi_path</code>, <code>aoi_circle</code>, <code>aoi_square</code> or <code>bounds</code></strong>. Shapefile components must share
+a base name and include <code>.shp</code>, <code>.shx</code>, <code>.dbf</code> and <code>.prj</code>. All polygon features
+are unioned, reprojected from the declared CRS and applied as a pixel-centre
+mask. Holes remain excluded. Download bounds are derived automatically; they
+do not replace the polygon mask. File and geometry hashes distinguish AOIs
+with different boundaries even when they share the same bounding rectangle.</p>
+<pre><code class="language-json">&quot;aoi_path&quot;: &quot;aoi/sardinia.shp&quot;
+</code></pre>
+<p>See <code>examples/sentinel2_shapefile_2021.json</code> and the desktop GUI guide.</p>
+<p>For a circular AOI without an input polygon file, use:</p>
+<pre><code class="language-json">&quot;aoi_circle&quot;: {&quot;latitude&quot;: 40.01, &quot;longitude&quot;: 8.76, &quot;radius_km&quot;: 0.75}
+</code></pre>
+<p>This constructs a WGS84 geodesic circle polygon with 720 boundary vertices.
+Its derived bounds limit acquisition and its polygon masks native pixel
+centres. The point, radius, construction method and geometry hash are retained
+in provenance. The full circle must satisfy the same geographic/area limits;
+it does not enable crossing the antimeridian or mosaicking scenes. See
+<code>examples/sentinel2_point_radius_2021.json</code>.</p>
+<p>For a centred square, use:</p>
+<pre><code class="language-json">&quot;aoi_square&quot;: {&quot;latitude&quot;: 40.01, &quot;longitude&quot;: 8.76, &quot;side_km&quot;: 1.5}
+</code></pre>
+<p>This defines the full side length in kilometres, aligned east/north in a local
+azimuthal equidistant projection. Densified edges are transformed to WGS84.
+See <code>examples/sentinel2_square_2021.json</code>.</p>
+<p>For polygon-file AOIs, the default output label comes from the filename stem.
+An <code>aoi_path</code> ending in <code>Forest reserve.shp</code> and <code>output: "maps/test.tif"</code>
+produce <code>maps/Forest reserve_&lt;source-product&gt;_LFMC_v01.tif</code>. Set
+<code>output_label: "My study"</code> to change the prefix. Use a non-empty portable
+filename component without path separators or reserved characters. The GUI
+shows the output prefix while the form is edited. Scene discovery supplies
+the source product identifier. Per-map provenance lists the actual filenames.</p>
+<p>WorldCover 2021 is the default for all acquisition years, including 2023.
+Set <code>landcover_year: 2020</code> to use the alternative snapshot. The selected map
+stays fixed throughout a time series; it may not represent land-cover changes
+after its reference year. No other land-cover maps are implemented yet.</p>
+<h2 id="single-days-and-inclusive-date-ranges">Single days and inclusive date ranges</h2>
+<p>With only <code>day</code>, discovery searches that complete UTC day. With <code>end_day</code>,
+it searches from 00:00 of <code>day</code> through all of the final minute of <code>end_day</code>,
+including seconds and fractional seconds. Where the catalogue supports it,
+the implementation uses midnight of the following day as an exclusive upper
+bound. End dates before the start date are rejected.</p>
+<pre><code class="language-json">&quot;day&quot;: &quot;2023-07-01&quot;,
+&quot;end_day&quot;: &quot;2023-07-31&quot;,
+&quot;landcover_year&quot;: 2021
+</code></pre>
+<p>Range-mode <code>run</code> processes all matching scenes, or the subset in <code>product_ids</code>.
+Sentinel-2, Landsat and Sentinel-3 use each scene's acquisition date for weather
+and calendar features. Multiple scenes on the same date remain separate maps;
+no gap filling, nearby-date substitution or mosaicking is applied. See
+<code>examples/sentinel2_timeseries_2023.json</code>.</p>
+<h2 id="product-specific-settings">Product-specific settings</h2>
+<table>
+<thead>
+<tr>
+<th>Product</th>
+<th><code>product</code></th>
+<th><code>sensor</code></th>
+<th><code>tile</code></th>
+<th>Extra choice</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sentinel-2 L2A</td>
+<td><code>s2_l2a</code></td>
+<td>Read from selected SAFE</td>
+<td>Optional MGRS, e.g. <code>32TMK</code>, without leading <code>T</code></td>
+<td>Exact UTC acquisition date</td>
+</tr>
+<tr>
+<td>Landsat 8 / 9</td>
+<td><code>landsat_c2l2</code></td>
+<td><code>L8/L9</code> for both, <code>L8</code> or <code>L9</code> for one</td>
+<td>Optional six-digit WRS path/row, e.g. <code>193032</code></td>
+<td>Exact UTC acquisition date</td>
+</tr>
+<tr>
+<td>Terra MODIS</td>
+<td><code>modis</code></td>
+<td><code>Terra MODIS</code></td>
+<td>Optional sinusoidal tile, e.g. <code>h18v04</code></td>
+<td>Explicit composite policy</td>
+</tr>
+<tr>
+<td>Aqua MODIS</td>
+<td><code>modis_aqua</code></td>
+<td><code>Aqua MODIS</code></td>
+<td>Same optional convention</td>
+<td>Explicit composite policy</td>
+</tr>
+<tr>
+<td>Suomi NPP VIIRS</td>
+<td><code>viirs</code></td>
+<td><code>Suomi NPP VIIRS</code></td>
+<td>Same optional convention</td>
+<td>Explicit composite policy</td>
+</tr>
+<tr>
+<td>Sentinel-3</td>
+<td><code>s3syn300</code></td>
+<td><code>S3A/S3B</code> for both, <code>S3A</code> or <code>S3B</code> for one</td>
+<td>Empty</td>
+<td>NTC collection 002, <code>.nc</code> output</td>
+</tr>
+</tbody>
+</table>
+<p>Only calibrated spacecraft domains are accepted. NOAA VIIRS spacecraft and
+other products are not substituted for the published Suomi NPP domain.</p>
+<h2 id="eight-day-composites">Eight-day composites</h2>
+<p>MODIS and VIIRS require:</p>
+<pre><code class="language-json">&quot;composite_policy&quot;: &quot;contains-analysis-date&quot;
+</code></pre>
+<p>The selected interval is anchored at day 1 of the year and contains <code>day</code>.
+For example, 22 July 2021 selects 20 through 27 July, with an exclusive end of
+28 July. Weather and day-of-year predictors use the configured analysis date.
+Reflectance may originate from another day within the composite, including a
+later day. This is a retrospective retrieval and depends on completed processing.
+The adapter does not replace the configured weather date with a per-pixel
+observation date.</p>
+<p>A MODIS/VIIRS range finds the eight-day composites overlapping the requested
+days, including the composite containing the start date. It processes each
+matching granule once. The first composite uses the requested start date as
+its weather/analysis date; later composites use their start dates. This also
+applies across calendar years. The final composite can contain observations
+after the requested end date, so the explicit composite confirmation remains
+required.</p>
+<h2 id="scene-selection-and-repeated-runs">Scene selection and repeated runs</h2>
+<p><code>discover</code> returns the current catalogue candidates. For a single date with
+several matches, insert one returned ID in <code>product_ids</code>. In range mode, omit
+IDs to process all matching scenes, or provide several IDs to choose a subset.
+The workflow does not choose the first candidate, search a nearby date or switch
+spacecraft when a scene is missing.</p>
+<p>For <code>output: "maps/lfmc.tif"</code>, a range writes names such as
+<code>lfmc_&lt;source-product&gt;_LFMC_v01.tif</code>, normal QA/provenance companions and
+<code>lfmc_timeseries.json</code>. Sentinel-3 uses <code>.nc</code> for each native map. The manifest
+records the requested interval, fixed WorldCover year and completed maps. It
+updates after each map and records a failure without discarding earlier results.
+An interrupted worker can leave its manifest marked <code>running</code>; completed maps
+remain valid. To retry, choose a new output prefix and reuse the cache, or
+request only the unfinished scene IDs with a new prefix. Existing final outputs
+and manifests are protected from replacement.</p>
+<p>Choose another output filename for a repeated run or a different weather mode.
+Keep the same cache when inputs can be reused. A cached request does not remove
+the need for valid provider configuration or guarantee that the complete run
+will work offline.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

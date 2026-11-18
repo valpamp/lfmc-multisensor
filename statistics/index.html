@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/statistics/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>AOI statistics - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../gui/" class="nav-link">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../configuration/" class="nav-link">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../method-and-validation/" class="nav-link">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../troubleshooting/" class="nav-link">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../outputs/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../method-and-validation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/statistics.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#summarise-lfmc-through-time" class="nav-link">Summarise LFMC through time</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#use-the-desktop-interface" class="nav-link">Use the desktop interface</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#available-or-common-support" class="nav-link">Available or common support</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#compare-vegetation-types" class="nav-link">Compare vegetation types</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#keep-the-outputs-and-their-support-information" class="nav-link">Keep the outputs and their support information</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#command-line-and-configuration" class="nav-link">Command line and configuration</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="summarise-lfmc-through-time">Summarise LFMC through time</h1>
+<p>AOI statistics turn a collection of LFMC maps into a table and time-series
+figures. You can summarise the whole selected area and separately examine
+Grass, Shrub and Tree, using the same dominant vegetation categories that
+selected the inference models. The analysis reads saved predictions and QA;
+it does not download data or load the model bundles again.</p>
+<p><img alt="Example AOI time-series figure with overall and vegetation summaries" src="../assets/statistics-demo.png" /></p>
+<p><em>Synthetic demonstration of the figure format, not field observations. The
+lower panel reports the fraction of each group retained on common support.</em></p>
+<h2 id="use-the-desktop-interface">Use the desktop interface</h2>
+<p>Before a new mapping run, select <strong>Calculate AOI statistics and figures after
+mapping</strong>. Open <strong>Statistics options / saved maps…</strong> to choose:</p>
+<ul>
+<li><strong>Summary line:</strong> median, with a shaded spatial interquartile range; or mean,
+  with a shaded band of one spatial standard deviation.</li>
+<li><strong>Vegetation groups:</strong> retain the overall AOI summary and add Grass, Shrub
+  and Tree. An absent or entirely invalid class remains missing, rather than
+  receiving an LFMC value of zero.</li>
+<li><strong>Pixel support:</strong> available valid pixels on each date, or common valid pixels
+  across every map. The coverage panel and CSV counts show how much support
+  contributes to the summaries.</li>
+</ul>
+<p>For an existing run, use the same options window to select its
+<code>&lt;label&gt;_timeseries.json</code>, a single LFMC GeoTIFF/NetCDF, or a per-map provenance
+JSON. Choose the AOI in the main form, set a filename label for the analysis,
+then click <strong>Analyse saved outputs</strong>. All completed maps in that source are
+analysed; the main date fields govern new mapping, rather than filtering this
+saved source. Models and provider credentials are not needed for this action.</p>
+<p>Statistics use the current polygon, circle, square or bounding box to select
+native pixel centres. The original map's valid footprint still limits coverage;
+selecting a larger AOI does not create observations outside it. Multiple features
+in a polygon file are treated as their union, as in mapping.</p>
+<h2 id="available-or-common-support">Available or common support</h2>
+<p><strong>Available</strong> summarises the valid pixels independently on each date. It works
+with shifted native grids, including different Sentinel-3 overpasses. Cloud
+screening and changing coverage can alter which parts of a class contribute,
+so read the coverage panel alongside the LFMC curves.</p>
+<p><strong>Common</strong> retains only pixel centres with valid predictions in every map.
+This is closest to the fixed-support summaries used in the paper's case studies.
+The maps must have identical grids and coordinates, and vegetation routing must
+agree on those common pixels. Shifted grids are rejected; no resampling is
+performed. A long or cloudy series can leave very few common pixels, or none.
+The table reports both available and retained counts.</p>
+<p>Summaries give equal weight to native pixel centres. They are not area-weighted
+statistics or fractions of pure vegetation cover. Grouping follows the maps'
+recorded model-routing categories and land-cover snapshot, rather than applying
+the GUI's land-cover selector to the saved maps again. Mixed products, weather
+modes, land-cover snapshots or model identities are rejected in one analysis.</p>
+<h2 id="compare-vegetation-types">Compare vegetation types</h2>
+<p>With vegetation groups enabled, the analysis also writes paired-date differences
+for Grass minus Shrub, Grass minus Tree and Shrub minus Tree. These differences
+are in <strong>LFMC percentage points</strong>. For example, class medians of 90% and 120%
+give a difference of −30 percentage points. Their temporal plot helps identify
+persistent contrasts and dates when those contrasts change.</p>
+<p>The shaded bands on the main figure describe <strong>spatial variability</strong>, not
+prediction confidence or statistical significance. Thousands of neighbouring
+pixels are not treated as independent replicates.</p>
+<p>For an optional exploratory temporal assessment, select <strong>Estimate exploratory
+paired-date vegetation contrast intervals</strong>. This selects common support and
+vegetation grouping. The calculation resamples blocks of consecutive paired
+dates, using a circular block bootstrap, and estimates an interval for the
+mean or median across those paired-date differences. The three intervals use
+a Bonferroni adjustment for a familywise confidence level of 95%. The method
+and end-to-start block construction are described in the
+<a href="https://bashtage.github.io/arch/bootstrap/generated/arch.bootstrap.CircularBlockBootstrap.html">bootstrap toolkit documentation</a>.
+The package implements the small NumPy resampling calculation directly; that
+external toolkit is not a dependency.</p>
+<p>Intervals require unique, regularly spaced paired dates, common support and
+at least <code>max(12, 4 × block length)</code> paired observations. The default block
+length is three dates, with 2,000 resamples and recorded random seeds. These
+minimums are operational safeguards, not a guarantee of reliable inference.
+The method assumes that the paired-difference process is sufficiently stable
+over the selected period; that assumption is not automatically established.
+Seasonal trends, disturbances and long dependence can make it unsuitable.</p>
+<p>The comparison CSV reports interval limits and whether they exclude zero.
+This is exploratory evidence about <strong>model-derived temporal contrasts on the
+selected common pixels</strong>, conditional on the assumptions. It does not establish
+a causal vegetation effect, represent model/field uncertainty or replace
+independent LFMC validation. No independent-pixel p-values are calculated.
+When requirements fail, the CSV reports the reason and retains descriptive
+differences without inventing an interval.</p>
+<p>Each source map remains a separate observation. Same-date products are not
+silently averaged or mosaicked, and duplicate dates prevent interval estimation.
+For that assessment, select one processing product per date when creating the
+series, or prepare a source manifest containing the chosen completed maps.</p>
+<p><img alt="Example vegetation contrast figure" src="../assets/vegetation-contrast-demo.png" /></p>
+<p><em>Synthetic illustration of paired-date contrasts and temporal summary
+intervals. These plotted values are a simulation, not a scientific result.</em></p>
+<h2 id="keep-the-outputs-and-their-support-information">Keep the outputs and their support information</h2>
+<p>The current filename label supplies these names:</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>Contents</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>&lt;label&gt;_aoi_statistics.csv</code></td>
+<td>Per-map/group counts, mean, median, sample spatial standard deviation, min/max and 5th/25th/75th/95th percentiles</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;_aoi_statistics.json</code></td>
+<td>The same rows, AOI, input checksums, model identity, definitions and comparison settings/results</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;_aoi_timeseries.png</code> / <code>.pdf</code></td>
+<td>LFMC curves with spatial spread and a valid-coverage panel</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;_vegetation_differences.csv</code></td>
+<td>Per-map paired class contrasts</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;_vegetation_comparisons.csv</code></td>
+<td>Temporal summaries, optional intervals and eligibility/status information</td>
+</tr>
+<tr>
+<td><code>&lt;label&gt;_vegetation_differences.png</code> / <code>.pdf</code></td>
+<td>Date-by-date contrasts and temporal contrast summaries</td>
+</tr>
+</tbody>
+</table>
+<p>The figures are exported as 300 dpi PNG and vector PDF. Vegetation-difference
+files are omitted when grouping is disabled. Existing statistics files are
+protected; use another label or output directory for another analysis.</p>
+<p><code>n</code> is the number of pixels actually used. <code>group_pixels</code> is the selected group
+within the map footprint; for <strong>All</strong>, this includes non-routed centres in the
+coverage denominator. <code>available_valid_pixels</code> counts valid predictions before
+the common-support restriction. <code>valid_fraction</code> is <code>n / group_pixels</code>, not a
+fraction of an entire polygon extending beyond the source map.</p>
+<p>New affine outputs include <code>&lt;map&gt;_vegetation.tif</code>, carrying the exact dominant
+class used for routing. Keep it with LFMC, QA and provenance. Sentinel-3 already
+stores <code>dominant_class</code> in its NetCDF. Earlier standalone GeoTIFFs can use their
+original cached land-cover input when its recorded checksum and grid match;
+keep the cache selected in the main form. Without that companion or verified
+cache, overall summaries remain possible by disabling vegetation grouping.</p>
+<p>Statistics on a partial or interrupted series use its completed maps and record
+the source status. Missing dates are not interpolated. If automatic statistics
+fail after mapping, the completed maps remain available: adjust the analysis
+settings and analyse those saved outputs without repeating inference.</p>
+<h2 id="command-line-and-configuration">Command line and configuration</h2>
+<p>To generate statistics after a new run, add:</p>
+<pre><code class="language-json">&quot;statistics&quot;: true,
+&quot;statistics_by_vegetation&quot;: true,
+&quot;statistics_centre&quot;: &quot;median&quot;,
+&quot;statistics_support&quot;: &quot;available&quot;
+</code></pre>
+<p>For saved outputs, add <code>statistics_source</code> to a normal AOI configuration, then run:</p>
+<pre><code class="language-text">lfmc-multisensor statistics examples/statistics_saved_series.json
+</code></pre>
+<p>That example needs its source and output paths adjusted to your own saved run.
+The optional comparison fields are <code>statistics_comparisons</code> and
+<code>statistics_block_length</code>. Computation uses raster windows and temporary
+disk-backed quantile buffers, processing one map at a time rather than loading
+an image stack into memory.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

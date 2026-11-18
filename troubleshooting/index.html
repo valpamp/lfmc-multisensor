@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" data-bs-theme="light">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/troubleshooting/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Troubleshooting - lfmc-multisensor</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/fontawesome.min.css" rel="stylesheet">
+        <link href="../css/brands.min.css" rel="stylesheet">
+        <link href="../css/solid.min.css" rel="stylesheet">
+        <link href="../css/v4-font-face.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
+        <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+        <script>hljs.highlightAll();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="nav-item">
+                                <a href=".." class="nav-link">Overview</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../installation/" class="nav-link">Installation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../accounts/" class="nav-link">Provider accounts</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../gui/" class="nav-link">Desktop GUI</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../tutorial/" class="nav-link">First map</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../configuration/" class="nav-link">Configuration</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../outputs/" class="nav-link">Outputs</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../statistics/" class="nav-link">AOI statistics</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../method-and-validation/" class="nav-link">Method and validation</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="./" class="nav-link active" aria-current="page">Troubleshooting</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="../citation/" class="nav-link">Citation</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ms-md-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-bs-toggle="modal" data-bs-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href="../method-and-validation/" class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../citation/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="https://github.com/valpamp/lfmc-multisensor/edit/master/docs/troubleshooting.md" class="nav-link"><i class="fa-brands fa-github"></i> Edit on GitHub</a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-bs-toggle="collapse" data-bs-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-body-tertiary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-bs-level="1"><a href="#troubleshooting" class="nav-link">Troubleshooting</a>
+              <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#python-or-gdal-fails-on-windows" class="nav-link">Python or GDAL fails on Windows</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#credentials-appear-configured-but-downloading-fails" class="nav-link">Credentials appear configured but downloading fails</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-desktop-window-does-not-open" class="nav-link">The desktop window does not open</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#a-shapefile-is-rejected-or-the-mask-looks-unexpected" class="nav-link">A shapefile is rejected or the mask looks unexpected</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#no-matching-scene-or-several-matches" class="nav-link">No matching scene, or several matches</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#date-or-land-cover-policy-is-rejected" class="nav-link">Date or land-cover policy is rejected</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#weather-is-unavailable-or-still-downloading" class="nav-link">Weather is unavailable or still downloading</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#an-optical-transfer-was-interrupted" class="nav-link">An optical transfer was interrupted</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#the-output-already-exists" class="nav-link">The output already exists</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#there-are-few-or-no-valid-predictions" class="nav-link">There are few or no valid predictions</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#a-model-is-missing-has-the-wrong-hash-or-cannot-be-loaded" class="nav-link">A model is missing, has the wrong hash or cannot be loaded</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#sentinel-3-will-not-write-a-geotiff" class="nav-link">Sentinel-3 will not write a GeoTIFF</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="troubleshooting">Troubleshooting</h1>
+<p>Start with the failing command and its configuration. Preserve the provenance
+and relevant error text, but remove credentials and authentication tokens before
+sharing diagnostics.</p>
+<h2 id="python-or-gdal-fails-on-windows">Python or GDAL fails on Windows</h2>
+<p>Open a Conda-capable terminal and activate the environment before running Python,
+pip, tests or the CLI. A full path to <code>python.exe</code> does not by itself activate
+the environment's native-library paths.</p>
+<pre><code class="language-text">conda activate lfmc-multisensor
+python -c &quot;import sys; print(sys.prefix)&quot;
+python -m pip check
+</code></pre>
+<p>Alternatively, use <code>conda run --no-capture-output -n lfmc-multisensor</code> before
+the Python command. Check that the prefix is the intended environment. If a
+native process fails, preserve the exit code and retry one small check before
+starting more jobs. Avoid running several large validation jobs while diagnosing
+an unstable environment.</p>
+<p>The explicit Windows lock includes the JPEG2000 driver needed by Sentinel-2.
+Installing an arbitrary rasterio/GDAL combination into an existing environment
+can leave that driver or its DLL dependencies unavailable.</p>
+<h2 id="credentials-appear-configured-but-downloading-fails">Credentials appear configured but downloading fails</h2>
+<p><code>access-check</code> reports configuration presence. Check the keys and expiry
+dates for CDSE (Sentinel-2 and Sentinel-3), the Earthdata account and token or
+login for MODIS/VIIRS, and your CDS token and AgERA5 terms for every workflow.
+Public scene discovery can succeed before an authenticated download fails.
+See the <a href="../accounts/">provider account guide</a> for the setup steps.</p>
+<h2 id="the-desktop-window-does-not-open">The desktop window does not open</h2>
+<p>Launch <code>lfmc-multisensor gui</code> from the activated Conda terminal to see startup
+errors. Confirm that the current package is installed in that environment.
+If Tkinter is unavailable, install the matching Conda <code>tk</code> package there. The
+GUI uses a local desktop window and needs an interactive graphical session.</p>
+<h2 id="a-shapefile-is-rejected-or-the-mask-looks-unexpected">A shapefile is rejected or the mask looks unexpected</h2>
+<p>Keep <code>.shp</code>, <code>.shx</code>, <code>.dbf</code> and <code>.prj</code> files together with the same base name.
+The CRS must be declared in <code>.prj</code>; use GIS software to identify and assign
+the correct source CRS before retrying. Assigning WGS84 to projected coordinates
+does not reproject them. Empty, invalid or non-polygon features require correction
+in the source dataset. The application does not repair or discard them silently.</p>
+<p>All features are combined, including disconnected parts, with holes retained.
+Pixels are selected by their native centres, so coarse satellite pixels do not
+trace a boundary exactly. QA code 4 marks centres outside the polygon union.
+The polygon's bounding rectangle must still satisfy the current area and
+latitude limits. If an AOI component changes after loading, reload the request.</p>
+<h2 id="no-matching-scene-or-several-matches">No matching scene, or several matches</h2>
+<p>Use <code>discover</code> with the same JSON configuration. Confirm date, area, tile and
+spacecraft. No nearby-date or alternate-sensor search is performed. When there
+are multiple matches on a single date, select one returned ID in <code>product_ids</code>.
+For a range, leave IDs empty to process all matches, or select a subset.
+Separate scenes remain separate maps.</p>
+<h2 id="date-or-land-cover-policy-is-rejected">Date or land-cover policy is rejected</h2>
+<p>The current code defaults to WorldCover 2021 for any acquisition year and also
+accepts WorldCover 2020. If a 2023 request still reports a same-year restriction,
+update the installed package in the active Conda environment and restart the GUI.
+The current JSON policy is <code>fixed-year</code>; old saved <code>same-year-annual</code> requests
+are migrated on loading. Check that an optional end date is not before the
+start date. MODIS/VIIRS still require the explicit containing-composite policy.</p>
+<h2 id="weather-is-unavailable-or-still-downloading">Weather is unavailable or still downloading</h2>
+<p>AgERA5 needs the analysis day's variables and complete antecedent rainfall
+history. Provider queues can delay an accepted request. Missing history stops
+preparation; it is not replaced with zero rainfall or another weather product.
+If a request is rejected, inspect the dataset's actual availability and account
+terms before changing the configuration.</p>
+<h2 id="an-optical-transfer-was-interrupted">An optical transfer was interrupted</h2>
+<p>Retry with the same cache folder. Completed assets with matching receipts
+can be reused, and incomplete assets restart from zero. Leave <code>.part</code> files
+for the downloader to handle. If you have an existing series manifest, see
+<a href="../gui/#cancel-and-recover">Cancel and recover</a> to retry just the unfinished scenes.</p>
+<p>Automatic recovery is not complete for every corrupt CDS archive or extracted
+daily NetCDF. Preserve the error and identify the affected cache entry before
+repairing it. Clearing an entire cache can unnecessarily repeat large downloads.</p>
+<h2 id="the-output-already-exists">The output already exists</h2>
+<p>Choose a new output label or filename. An interrupted date-range attempt can
+leave a <code>*_timeseries.json</code> manifest that reserves the label even before the
+first map is finished. Keep that manifest for recovery and retain each
+completed map's JSON provenance alongside it.</p>
+<h2 id="there-are-few-or-no-valid-predictions">There are few or no valid predictions</h2>
+<p>Inspect QA counts first. Cloud/snow/retrieval screening, non-routed land cover,
+missing optical values or incomplete weather/terrain predictors can each reduce
+coverage. Only dominant grass, shrub and tree categories select a model.
+An all-cloud scene can legitimately have no LFMC estimates. Do not replace
+no-data with zero or relax QA simply to obtain a complete-looking map.</p>
+<h2 id="a-model-is-missing-has-the-wrong-hash-or-cannot-be-loaded">A model is missing, has the wrong hash or cannot be loaded</h2>
+<p>Use the authorised published bundles, preserve their original filenames and
+check <code>models_dir</code> relative to the JSON file. The loader requires scikit-learn
+1.9.0 and the known artefact hashes. Do not bypass these checks or load an
+untrusted replacement to make a run proceed.</p>
+<h2 id="sentinel-3-will-not-write-a-geotiff">Sentinel-3 will not write a GeoTIFF</h2>
+<p>Use a <code>.nc</code> output path. The native grid needs two-dimensional latitude and
+longitude. Read the NetCDF variables as described in the output guide. A
+regular-grid export requires a separate, explicit resampling implementation.</p></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script src="../js/bootstrap.bundle.min.js"></script>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js"></script>
+        <script src="../search/main.js"></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>
