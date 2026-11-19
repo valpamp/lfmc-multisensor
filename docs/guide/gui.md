@@ -43,7 +43,11 @@ the polygon union; hole interiors are excluded. The saved grid remains native,
 with no-data outside the selected polygons. Input footprints are not reshaped
 or resampled to make polygon boundaries look smoother.
 
-To try the supplied example, load `examples/sentinel2_shapefile_2021.json` using
+For the first map, use **Load configuration** to open
+`examples/sentinel2_camp_fire_2018.json`. It selects a Sentinel-2 scene and a
+small bounding box in the Camp Fire study area.
+
+To try shapefile masking, load `examples/sentinel2_shapefile_2021.json` using
 **Load configuration**. Its manually drawn Sardinia AOI includes a cut corner
 and a small hole to demonstrate masking. It is not a field-site or fire-perimeter
 dataset. Replace the models/cache/output paths for your installation.

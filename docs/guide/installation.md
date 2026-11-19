@@ -7,15 +7,16 @@ same setup.
 
 ## Clone the repository
 
-Install Git and [Git LFS](https://git-lfs.com/), then run `git lfs install` once
-before cloning. On the GitHub project page, copy the HTTPS clone URL from
-**Code** and run `git clone` with that URL. Git LFS retrieves the three model
-files into `model-assets/` as part of checkout, about 628 MB in total. A
-public clone requires no model-host account or access request.
+Install [Git](https://git-scm.com/downloads). In the parent folder where you
+want to keep the project, run:
 
-If you already cloned the project and the model files are tiny pointer files,
-run `git lfs pull` from the repository folder. Use a Git LFS checkout for the
-installation.
+```text
+git clone https://github.com/valpamp/lfmc-multisensor.git
+cd lfmc-multisensor
+```
+
+The public clone includes the three compressed model bundles in
+`model-assets/`, about 170 MiB in total. Standard Git is sufficient.
 
 ## Tested Windows installation
 
@@ -48,7 +49,7 @@ Check which environment is running:
 
 ```text
 python -c "import sys, numpy, rasterio; print(sys.prefix); print(numpy.__version__); print(rasterio.__version__)"
-python -m lfmc_multisensor.cli plan examples/sentinel2_2021.json
+python -m lfmc_multisensor.cli plan examples/sentinel2_camp_fire_2018.json
 ```
 
 The printed prefix should identify the environment you just activated. The plan
@@ -56,7 +57,7 @@ command does not download data. If a terminal cannot retain activation, use
 Conda to launch each command:
 
 ```text
-conda run --no-capture-output -n lfmc-multisensor python -m lfmc_multisensor.cli plan examples/sentinel2_2021.json
+conda run --no-capture-output -n lfmc-multisensor python -m lfmc_multisensor.cli plan examples/sentinel2_camp_fire_2018.json
 ```
 
 ## Supply the published models
@@ -65,19 +66,21 @@ The checkout includes all three LFMC model bundles from model set **1.0.0**:
 
 ```text
 model-assets/
-  best_Grass_gapfill_within_site.joblib
-  best_Shrub_gapfill_within_site.joblib
-  best_Tree_gapfill_within_site.joblib
+  best_Grass_gapfill_within_site.joblib.bz2
+  best_Shrub_gapfill_within_site.joblib.bz2
+  best_Tree_gapfill_within_site.joblib.bz2
 ```
 
 The example configurations already refer to this directory. To use another
 location, change `models_dir` in the configuration. Paths are resolved relative
 to the configuration file, including when you run the CLI from another directory.
 
-In the GUI, select the `model-assets` folder and click **Check models** before
-running the first map. The loader verifies the files' SHA-256 checksums and
-checks their contents. It requires scikit-learn **1.9.0**, which is included in
-the Windows environment above.
+In the GUI, select `model-assets` and click **Check models** before running
+the first map. Both **Check models** and a CLI run automatically extract and
+verify each bundle on first use. Allow about 600 MiB of extra space in the
+model directory for the extracted `.joblib` files. Subsequent runs reuse
+these files and verify them against the published SHA-256 checksums. The
+Windows environment above includes the required scikit-learn **1.9.0**.
 
 Only load files from a trusted source. Joblib/Python model serialisation can
 execute code; a model file is not an inert data table.

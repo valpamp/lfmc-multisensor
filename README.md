@@ -94,12 +94,13 @@ progress. WorldCover stays fixed at the selected 2021 or 2020 snapshot.
 
 ## Start here
 
-The [first-map tutorial](docs/guide/tutorial.md) walks through a small Sentinel-2
-example in Sardinia. You will need Conda, your own provider access, and authorised
-copies of the three published model bundles.
+The [first-map tutorial](docs/guide/tutorial.md) uses the Sentinel-2 acquisition
+from 6 November 2018 in the paper's Camp Fire case study. You will need Conda
+and your own provider access. The clone includes the three published model bundles.
 
-Clone the GitHub repository with Git LFS enabled to retrieve the three model
-files. Follow the [clone instructions](docs/guide/installation.md#clone-the-repository).
+Clone the [LFMC multisensor repository on GitHub](https://github.com/valpamp/lfmc-multisensor)
+to retrieve the three compressed model files. Follow the
+[clone instructions](docs/guide/installation.md#clone-the-repository).
 On Windows x64, install [Miniforge](https://github.com/conda-forge/miniforge#windows)
 if you need Conda. Open the Miniforge Prompt in your checkout and run these commands.
 
@@ -117,14 +118,14 @@ requires **scikit-learn 1.9.0** exactly. See the
 [installation guide](docs/guide/installation.md) for environment checks and the
 alternative `conda run` invocation.
 
-Git LFS checks out the three verified bundles in `model-assets/`. The GUI can
+The loader extracts and verifies the bundles in `model-assets/` on first use. The GUI can
 verify them with **Check models** before the first run.
 
 ```text
 model-assets/
-  best_Grass_gapfill_within_site.joblib
-  best_Shrub_gapfill_within_site.joblib
-  best_Tree_gapfill_within_site.joblib
+  best_Grass_gapfill_within_site.joblib.bz2
+  best_Shrub_gapfill_within_site.joblib.bz2
+  best_Tree_gapfill_within_site.joblib.bz2
 ```
 
 Set up [provider accounts](docs/guide/accounts.md). The first Sentinel-2 map
@@ -136,10 +137,10 @@ lfmc-multisensor gui
 ```
 
 ```text
-lfmc-multisensor plan examples/sentinel2_2021.json
-lfmc-multisensor access-check examples/sentinel2_2021.json
-lfmc-multisensor discover examples/sentinel2_2021.json
-lfmc-multisensor run examples/sentinel2_2021.json
+lfmc-multisensor plan examples/sentinel2_camp_fire_2018.json
+lfmc-multisensor access-check examples/sentinel2_camp_fire_2018.json
+lfmc-multisensor discover examples/sentinel2_camp_fire_2018.json
+lfmc-multisensor run examples/sentinel2_camp_fire_2018.json
 ```
 
 `plan` explains the requested inputs without contacting providers. `access-check`

@@ -22,19 +22,29 @@ Data Store access for daily weather. Other products use the routes below.
    [S3 credentials manager](https://eodata-s3keysmanager.dataspace.copernicus.eu/panel/s3-credentials).
 2. Choose **Add Credentials**, set an expiry date and confirm. Save the access
    key and secret key securely. The secret is shown once. [CDSE S3 instructions](https://documentation.dataspace.copernicus.eu/APIs/S3.html)
-3. In the activated Windows Conda **Command Prompt**, run each line in turn and
-   paste the corresponding key when prompted.
+3. In a Windows **PowerShell** terminal with the LFMC Conda environment
+   activated, copy and run each line exactly as shown. When the terminal asks
+   for a key, paste only the key and press Enter. The quoted labels are the
+   prompts you will see. Leave them as written. PowerShell masks the secret
+   key as you enter it.
+
+```powershell
+$env:CDSE_S3_ACCESS_KEY = Read-Host "CDSE access key"
+$env:CDSE_S3_SECRET_KEY = [System.Net.NetworkCredential]::new('', (Read-Host "CDSE secret key" -AsSecureString)).Password
+```
+
+If your terminal is **Command Prompt (cmd.exe)**, including Anaconda Prompt,
+use these commands instead. Run each line as written and paste the key when
+prompted. Command Prompt displays what you enter.
 
 ```bat
 set /p "CDSE_S3_ACCESS_KEY=CDSE access key: "
 set /p "CDSE_S3_SECRET_KEY=CDSE secret key: "
 ```
 
-Launch the GUI or CLI from that prompt. These settings last until you close
-the terminal. If you use PowerShell, set the same variables with
-`$env:CDSE_S3_ACCESS_KEY = Read-Host "CDSE access key"` and
-`$env:CDSE_S3_SECRET_KEY = Read-Host "CDSE secret key"`. Generate a new pair
-when the keys expire.
+Run the [access check](#check-what-the-package-can-find) and launch the LFMC
+GUI or CLI from the same terminal so it can read the keys. These settings
+last until you close that terminal. Generate a new pair when the keys expire.
 
 Sentinel-2 uses S3 to read native AOI windows from reflectance and raster
 masks. Sentinel-3 also uses S3 and downloads the complete files it needs
@@ -48,8 +58,10 @@ S3 route for the tutorial.
 
 ## Climate Data Store
 
-1. Register or sign in to CDS and copy the two configuration lines shown by the
-   [CDS API setup page](https://cds.climate.copernicus.eu/how-to-api).
+1. On the [CDS API setup page](https://cds.climate.copernicus.eu/how-to-api),
+   follow **1. Setup the CDS Api key**. Register or sign in, then copy the two
+   configuration lines beginning with `url:` and `key:`. The page shows a Unix
+   path for the file. On Windows, use the location in the next step.
 2. Save those lines in `%USERPROFILE%\.cdsapirc` on Windows. In Notepad, choose
    **All files** when saving and make sure the name is exactly `.cdsapirc`.
 3. While signed in, open the
@@ -69,15 +81,22 @@ configured correctly while a request is still waiting for completion.
    DAAC application. [NASA application authorisation](https://urs.earthdata.nasa.gov/documentation/for_users/how_to_preauth_app)
 2. From your profile, choose **Generate Token** and copy the token when
    displayed. [NASA token instructions](https://urs.earthdata.nasa.gov/documentation/for_users/user_token)
-3. In the activated Windows Conda Command Prompt, run the following and paste
-   the token when prompted. Launch LFMC from the same terminal.
+3. In **PowerShell** with the LFMC Conda environment activated, copy and run
+   this line as written. Paste the token at the masked prompt and press Enter.
+
+```powershell
+$env:EARTHDATA_TOKEN = [System.Net.NetworkCredential]::new('', (Read-Host "Earthdata token" -AsSecureString)).Password
+```
+
+If you are using **Command Prompt (cmd.exe)**, run this line as written and
+paste the token when prompted. Command Prompt displays what you enter.
 
 ```bat
 set /p "EARTHDATA_TOKEN=Earthdata token: "
 ```
 
-In PowerShell, use `$env:EARTHDATA_TOKEN = Read-Host "Earthdata token"`.
-You can also use a home-directory `.netrc` or `_netrc` with an
+Launch LFMC from the same terminal. You can also use a home-directory
+`.netrc` or `_netrc` with an
 `urs.earthdata.nasa.gov` entry, or set both `EARTHDATA_USERNAME` and
 `EARTHDATA_PASSWORD`. [NASA netrc instructions](https://urs.earthdata.nasa.gov/documentation/for_users/data_access/curl_and_wget)
 
@@ -86,7 +105,7 @@ You can also use a home-directory `.netrc` or `_netrc` with an
 In your activated Conda environment:
 
 ```text
-lfmc-multisensor access-check examples/sentinel2_2021.json
+lfmc-multisensor access-check examples/sentinel2_camp_fire_2018.json
 ```
 
 The command reports whether configuration is present, without returning secret

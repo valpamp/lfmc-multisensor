@@ -1,0 +1,12 @@
+{
+  "bounds": [-121.66, 39.75, -121.62, 39.78],
+  "day": "2018-11-06",
+  "tile": "10TFK",
+  "product_ids": ["4ffd9bb3-827b-4f8f-9cd1-bd81bdffe256"],
+  "landcover_year": 2021,
+  "landcover_policy": "fixed-year",
+  "downscale": false,
+  "models_dir": "../model-assets",
+  "cache_dir": "../cache",
+  "output": "../outputs/lfmc_camp_fire_20181106.tif"
+}

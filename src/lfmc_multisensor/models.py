@@ -1,9 +1,12 @@
 """Hash-verified loading of trusted published bundles; no downloads or refitting."""
+import bz2
 import hashlib
 from importlib.resources import files
 from importlib.metadata import version as installed_version
 import io
 import json
+from pathlib import Path
+from tempfile import NamedTemporaryFile
 
 import joblib
 
@@ -58,13 +61,39 @@ def validate_bundle(bundle, vegetation):
         raise ValueError("Published calibration domains mismatch")
 
 
+def _extract_published_bundle(path, vegetation, expected_hash):
+    archive = path.with_suffix(path.suffix + '.bz2')
+    if not archive.is_file():
+        raise FileNotFoundError(f'Missing {path.name} and {archive.name} in {path.parent}')
+    digest = hashlib.sha256()
+    output = NamedTemporaryFile(
+        dir=path.parent, prefix=path.name + '.', suffix='.part', delete=False,
+    )
+    temporary = Path(output.name)
+    try:
+        with output, bz2.open(archive, 'rb') as source:
+            while chunk := source.read(1024 * 1024):
+                digest.update(chunk)
+                output.write(chunk)
+        if digest.hexdigest() != expected_hash:
+            raise ValueError(f'Published artifact hash mismatch: {vegetation}')
+        if not path.exists():
+            try:
+                temporary.replace(path)
+            except PermissionError:
+                # A concurrent loader may have installed and opened the same bundle.
+                if not path.is_file():
+                    raise
+    finally:
+        temporary.unlink(missing_ok=True)
+
+
 def load_published_bundle(path, vegetation):
-    """Load only bytes matching the known publication SHA256, then validate.
+    """Extract if needed, check the published SHA-256, then load and validate.
 
     The in-memory byte stream ensures the bytes checked are the bytes loaded.
     This loads Python serialization and must only be used with trusted artifacts.
     """
-    from pathlib import Path
     spec = publication_manifest()["artifacts"].get(vegetation)
     if spec is None:
         raise ValueError(f"Unsupported vegetation: {vegetation}")
@@ -72,7 +101,10 @@ def load_published_bundle(path, vegetation):
     actual=installed_version('scikit-learn')
     if actual!=required:
         raise ValueError(f'Published bundles require scikit-learn {required}; installed {actual}. Install the pinned workflow environment.')
-    payload = Path(path).read_bytes()
+    path = Path(path)
+    if not path.exists():
+        _extract_published_bundle(path, vegetation, spec['sha256'])
+    payload = path.read_bytes()
     if hashlib.sha256(payload).hexdigest() != spec["sha256"]:
         raise ValueError(f"Published artifact hash mismatch: {vegetation}")
     bundle = joblib.load(io.BytesIO(payload))

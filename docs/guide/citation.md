@@ -21,10 +21,10 @@ The Camp Fire comparison comes from Figure A3 of the article. It is reproduced
 without modification, with attribution to Pampanoni and coauthors (2026), under the
 [Creative Commons Attribution 4.0 International licence](https://creativecommons.org/licenses/by/4.0/).
 
-The 2018 Camp Fire figure is a published historical illustration. The current
-direct workflows use a fixed WorldCover 2021 or 2020 snapshot and retain their
-audited QA choices. The image is not a claim that a new GUI run reproduces the
-2018 inputs or establishes independent field accuracy.
+The [first-map tutorial](tutorial.md) reuses the Sentinel-2 acquisition date
+from Figure A3 over a smaller area. It uses the release workflow's fixed
+WorldCover 2021 snapshot and original AgERA5 weather. The figure uses pre-fire
+Dynamic World vegetation routing and terrain-adjusted weather.
 
 ## Licence and commercial use
 

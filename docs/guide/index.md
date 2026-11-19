@@ -8,7 +8,7 @@ are possible. The package applies the
 a chosen area and date, then saves the predictions with quality codes and input
 provenance. It does not train a new model during a mapping run.
 
-Start with the small Sardinia example before changing the area or product.
+Start with the small Sentinel-2 Camp Fire example before changing the area or product.
 This gives you a known configuration for checking installation, provider access
 and the model files.
 
