@@ -10,6 +10,10 @@ mass. A value of 100% means equal masses of water and dry material; values above
 Random Forest models to satellite pixels and writes moisture estimates, quality information
 and a record of the inputs used.
 
+**Explore before installing.** The [EOSIAL Fire Weather Viewer](https://valpamp.github.io/eosial-viewer/fire-weather/)
+serves 8-day VIIRS LFMC maps for the western United States, with point and area
+time series, GeoTIFF downloads and an optional Globe-LFMC 2.0 sampling-site layer.
+
 **Development candidate.** Working examples cover every product below. Current
 runs use **WorldCover 2021 by default**, with **2020** selectable independently
 of the acquisition year. The three trained models come with the repository.

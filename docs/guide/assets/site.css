@@ -1,0 +1,36 @@
+.navbar.fixed-top.bg-primary {
+    --bs-navbar-color: #314239;
+    --bs-navbar-hover-color: #214e31;
+    --bs-navbar-active-color: #214e31;
+    --bs-navbar-disabled-color: #6b746e;
+    --bs-navbar-toggler-border-color: #b7c4b7;
+    background-color: #faf9f4 !important;
+    background-image: none;
+    border-bottom: 1px solid #dce4da;
+}
+
+.navbar.fixed-top .nav-link.active {
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: .25em;
+}
+
+.navbar.fixed-top .navbar-toggler-icon {
+    filter: brightness(.3);
+}
+
+.navbar-brand.lfmc-brand {
+    display: inline-flex;
+    align-items: center;
+}
+
+.lfmc-brand img {
+    width: clamp(12rem, 22vw, 16rem);
+    height: auto;
+}
+
+.lfmc-viewer-link {
+    width: fit-content;
+    max-width: 100%;
+    white-space: normal;
+}

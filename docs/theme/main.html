@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block site_name %}
+<a class="navbar-brand lfmc-brand" href="{{ nav.homepage.url | url }}">
+    <img src="{{ 'assets/lfmc-logo.png' | url }}" alt="{{ config.site_name }}" width="900" height="245">
+</a>
+{% endblock %}
+
+{% block extrahead %}
+<link rel="icon" type="image/png" href="{{ 'assets/lfmc-mark.png' | url }}">
+{% endblock %}

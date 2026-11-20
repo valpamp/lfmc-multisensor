@@ -8,6 +8,26 @@ are possible. The package applies the
 a chosen area and date, then saves the predictions with quality codes and input
 provenance. It does not train a new model during a mapping run.
 
+## Explore LFMC maps online
+
+The **EOSIAL Fire Weather Viewer** lets you explore published 8-day Suomi NPP
+VIIRS LFMC maps for the western United States in your browser. It requires no
+installation or provider accounts.
+
+<p><a class="btn btn-primary lfmc-viewer-link" href="https://valpamp.github.io/eosial-viewer/fire-weather/">Open the Fire Weather Viewer</a></p>
+
+- **Browse and download maps.** Switch between composites, adjust the colour
+  palette and opacity, or download a GeoTIFF and view its provenance.
+- **Chart a point or area.** Click a pixel to inspect its LFMC estimate and
+  use **Show LFMC chart** to see its history. With **Query area time series**,
+  drag and release a rectangle or select two opposite corners to chart the mean
+  and interquartile range (the 25th–75th percentiles) of valid pixels for each
+  composite.
+- **Find field sampling locations.** Enable **Globe-LFMC 2.0 sampling sites**
+  to see historical field locations and click a marker to identify the site.
+
+## Generate your own maps
+
 Start with the small Sentinel-2 Camp Fire example before changing the area or product.
 This gives you a known configuration for checking installation, provider access
 and the model files.

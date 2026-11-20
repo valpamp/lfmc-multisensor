@@ -1,4 +1,4 @@
-site_name: lfmc-multisensor
+site_name: LFMC Multisensor
 site_description: Map live fuel moisture from satellite reflectance, weather and terrain.
 docs_dir: docs/guide
 exclude_docs: |
@@ -9,7 +9,10 @@ use_directory_urls: true
 strict: true
 theme:
   name: mkdocs
+  custom_dir: docs/theme
   highlightjs: true
+extra_css:
+  - assets/site.css
 nav:
   - Overview: index.md
   - Installation: installation.md

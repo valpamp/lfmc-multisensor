@@ -15,6 +15,7 @@ _netrc
 # Local development and release evidence.
 /docs/*
 !/docs/guide/
+!/docs/theme/
 /docs/guide/assets/paper-assets.json
 /docs/guide/assets/paper-workflow.png
 /environment.yml
