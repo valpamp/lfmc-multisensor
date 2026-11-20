@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/">
         <link rel="shortcut icon" href="img/favicon.ico">
-        <title>lfmc-multisensor</title>
+        <title>LFMC Multisensor</title>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/fontawesome.min.css" rel="stylesheet">
         <link href="css/brands.min.css" rel="stylesheet">
@@ -17,14 +17,20 @@
         <link href="css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="assets/site.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
+        <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/png" href="assets/lfmc-mark.png">
+
     </head>
 
     <body class="homepage">
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href=".">lfmc-multisensor</a>
+<a class="navbar-brand lfmc-brand" href=".">
+    <img src="assets/lfmc-logo.png" alt="LFMC Multisensor" width="900" height="245">
+</a>
+
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -108,6 +114,14 @@
             
             <li class="nav-item" data-bs-level="1"><a href="#from-satellite-observations-to-a-fuel-moisture-map" class="nav-link">From satellite observations to a fuel-moisture map</a>
               <ul class="nav flex-column">
+            <li class="nav-item" data-bs-level="2"><a href="#explore-lfmc-maps-online" class="nav-link">Explore LFMC maps online</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+            <li class="nav-item" data-bs-level="2"><a href="#generate-your-own-maps" class="nav-link">Generate your own maps</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
             <li class="nav-item" data-bs-level="2"><a href="#project-updates-and-feedback" class="nav-link">Project updates and feedback</a>
               <ul class="nav flex-column">
               </ul>
@@ -127,7 +141,25 @@ are possible. The package applies the
 <a href="https://doi.org/10.3390/rs18213744">published vegetation models</a> to
 a chosen area and date, then saves the predictions with quality codes and input
 provenance. It does not train a new model during a mapping run.</p>
-<p>Start with the small Sardinia example before changing the area or product.
+<h2 id="explore-lfmc-maps-online">Explore LFMC maps online</h2>
+<p>The <strong>EOSIAL Fire Weather Viewer</strong> lets you explore published 8-day Suomi NPP
+VIIRS LFMC maps for the western United States in your browser. It requires no
+installation or provider accounts.</p>
+<p><a class="btn btn-primary lfmc-viewer-link" href="https://valpamp.github.io/eosial-viewer/fire-weather/">Open the Fire Weather Viewer</a></p>
+
+<ul>
+<li><strong>Browse and download maps.</strong> Switch between composites, adjust the colour
+  palette and opacity, or download a GeoTIFF and view its provenance.</li>
+<li><strong>Chart a point or area.</strong> Click a pixel to inspect its LFMC estimate and
+  use <strong>Show LFMC chart</strong> to see its history. With <strong>Query area time series</strong>,
+  drag and release a rectangle or select two opposite corners to chart the mean
+  and interquartile range (the 25th–75th percentiles) of valid pixels for each
+  composite.</li>
+<li><strong>Find field sampling locations.</strong> Enable <strong>Globe-LFMC 2.0 sampling sites</strong>
+  to see historical field locations and click a marker to identify the site.</li>
+</ul>
+<h2 id="generate-your-own-maps">Generate your own maps</h2>
+<p>Start with the small Sentinel-2 Camp Fire example before changing the area or product.
 This gives you a known configuration for checking installation, provider access
 and the model files.</p>
 <p>Use the <a href="gui/">desktop GUI</a> if you prefer selecting a shapefile and filling
@@ -241,5 +273,5 @@ users is welcome. <a href="https://github.com/valpamp/lfmc-multisensor/issues">S
 
 <!--
 MkDocs version : 1.6.1
-Build Date UTC : 2026-11-18 14:16:43.312948+00:00
+Build Date UTC : 2026-11-20 12:03:18.892928+00:00
 -->

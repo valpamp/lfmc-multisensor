@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/tutorial/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>First map - lfmc-multisensor</title>
+        <title>First map - LFMC Multisensor</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -17,14 +17,20 @@
         <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/site.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
+        <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/png" href="../assets/lfmc-mark.png">
+
     </head>
 
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+<a class="navbar-brand lfmc-brand" href="..">
+    <img src="../assets/lfmc-logo.png" alt="LFMC Multisensor" width="900" height="245">
+</a>
+
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -140,29 +146,30 @@
                     <div class="col-md-9" role="main">
 
 <h1 id="make-your-first-lfmc-map">Make your first LFMC map</h1>
-<p>This tutorial estimates live fuel moisture for a small area in Sardinia on
-22 July 2021 using Sentinel-2. Start with the supplied configuration so that
-installation, credentials and model access can be checked against an exercised
-example. You can then change the satellite or area using the configuration guide.</p>
-<p>Complete the <a href="../installation/">Conda installation</a>, obtain the three trusted
-models and <a href="../accounts/">configure CDSE and CDS access</a> first. Run every command
+<p>This tutorial estimates live fuel moisture near Paradise, California, from
+the Sentinel-2 acquisition on 6 November 2018, two days before the Camp Fire.
+The small area lies within the extent shown in the <a href="https://doi.org/10.3390/rs18213744">paper's Appendix B</a>.
+The tutorial uses WorldCover 2021 for vegetation routing and leaves weather
+downscaling off. The published Figure A3 uses a pre-fire Dynamic World composite
+and terrain-adjusted weather, so expect differences in coverage and LFMC.</p>
+<p>Complete the <a href="../installation/">Conda installation</a> and <a href="../accounts/">configure CDSE and CDS
+access</a> first. The clone includes the three model bundles. Run every command
 below from the repository directory in the activated environment.</p>
-<p>For a form with file pickers, follow the <a href="../gui/">desktop GUI tutorial</a>.
-It starts from a shapefile AOI and uses the same models, provider inputs and
-quality rules. The command-line example below retains a simple bounding box
-so that it can be compared with the original validation case.</p>
+<p>To run the same configuration with file pickers, follow the <a href="../gui/">desktop GUI
+tutorial</a>.</p>
 <h2 id="1-understand-the-request">1. Understand the request</h2>
-<p>The file <code>examples/sentinel2_2021.json</code> contains these settings:</p>
+<p>The file <code>examples/sentinel2_camp_fire_2018.json</code> contains these settings:</p>
 <pre><code class="language-json">{
-  &quot;bounds&quot;: [8.75, 40.0, 8.77, 40.02],
-  &quot;day&quot;: &quot;2021-07-22&quot;,
-  &quot;tile&quot;: &quot;32TMK&quot;,
+  &quot;bounds&quot;: [-121.66, 39.75, -121.62, 39.78],
+  &quot;day&quot;: &quot;2018-11-06&quot;,
+  &quot;tile&quot;: &quot;10TFK&quot;,
+  &quot;product_ids&quot;: [&quot;4ffd9bb3-827b-4f8f-9cd1-bd81bdffe256&quot;],
   &quot;landcover_year&quot;: 2021,
   &quot;landcover_policy&quot;: &quot;fixed-year&quot;,
   &quot;downscale&quot;: false,
   &quot;models_dir&quot;: &quot;../model-assets&quot;,
   &quot;cache_dir&quot;: &quot;../cache&quot;,
-  &quot;output&quot;: &quot;../outputs/lfmc_20210722.tif&quot;
+  &quot;output&quot;: &quot;../outputs/lfmc_camp_fire_20181106.tif&quot;
 }
 </code></pre>
 <p><code>bounds</code> lists west, south, east and north in longitude/latitude degrees.
@@ -176,21 +183,20 @@ Downscaling is initially disabled.</p>
 <p>Paths start from the directory containing the JSON file. Here, <code>../cache</code>
 means the repository's <code>cache</code> directory, not a directory relative to your shell.</p>
 <p>Inspect the acquisition plan:</p>
-<pre><code class="language-text">lfmc-multisensor plan examples/sentinel2_2021.json
+<pre><code class="language-text">lfmc-multisensor plan examples/sentinel2_camp_fire_2018.json
 </code></pre>
 <p>This command does not contact providers. It lists the required inputs, including
 rainfall history back to 84 days before the analysis date. You do not need to
 download that history yourself.</p>
 <h2 id="2-check-access-and-select-the-scene">2. Check access and select the scene</h2>
-<pre><code class="language-text">lfmc-multisensor access-check examples/sentinel2_2021.json
-lfmc-multisensor discover examples/sentinel2_2021.json
+<pre><code class="language-text">lfmc-multisensor access-check examples/sentinel2_camp_fire_2018.json
+lfmc-multisensor discover examples/sentinel2_camp_fire_2018.json
 </code></pre>
 <p>The access check reports configuration presence without showing secrets. The
-catalogue query then returns scenes matching the requested day, tile and area.
-If exactly one scene matches, the run can select it. If several match, add a
-<code>product_ids</code> list containing one of the returned IDs to your JSON file. Copy
-the actual catalogue ID; do not substitute a filename. Multiple scenes are not
-combined automatically.</p>
+catalogue query checks the pinned CDSE product for this date, tile and area.
+When adapting the example to another area or date, remove the pinned
+<code>product_ids</code> and run discovery again. If several scenes match, set
+<code>product_ids</code> to the catalogue ID of the scene you want to run.</p>
 <p>Optional model preflight, in Python within the same Conda environment:</p>
 <pre><code class="language-python">from pathlib import Path
 from lfmc_multisensor.models import load_published_bundle
@@ -200,10 +206,10 @@ for vegetation in (&quot;Grass&quot;, &quot;Shrub&quot;, &quot;Tree&quot;):
     load_published_bundle(path, vegetation)
     print(vegetation, &quot;model identity and contents checked&quot;)
 </code></pre>
-<p>This catches missing bundles, unexpected hashes and incompatible serialisation
-before a large download. Do not run it on untrusted model files.</p>
+<p>This extracts the bundles on first use and checks their hashes and contents
+before a large download. Use only the trusted model bundles from the repository.</p>
 <h2 id="3-download-inputs-and-predict">3. Download inputs and predict</h2>
-<pre><code class="language-text">lfmc-multisensor run examples/sentinel2_2021.json
+<pre><code class="language-text">lfmc-multisensor run examples/sentinel2_camp_fire_2018.json
 </code></pre>
 <p>The workflow acquires the required satellite assets, prepares reflectance and
 quality masks, obtains terrain and land cover, and builds the weather predictors.
@@ -216,12 +222,13 @@ folder. Verified inputs are reused and incomplete downloads restart at the
 asset level. If the earlier attempt created output files, give the retry a
 new output name. For interrupted date ranges, see <a href="../gui/#cancel-and-recover">Cancel and recover</a>.</p>
 <h2 id="4-inspect-the-map-and-quality-codes">4. Inspect the map and quality codes</h2>
-<p>The example writes:</p>
+<p>The example writes the following files. The names retain the source scene,
+processing baseline <code>N0500</code> and LFMC model version <code>v01</code>.</p>
 <pre><code class="language-text">outputs/
-  lfmc_20210722.tif
-  lfmc_20210722_qa.tif
-  lfmc_20210722_vegetation.tif
-  lfmc_20210722.json
+  lfmc_camp_fire_20181106_S2B_MSIL2A_20181106T185559_N0500_R113_T10TFK_20230709T125120_LFMC_v01.tif
+  lfmc_camp_fire_20181106_S2B_MSIL2A_20181106T185559_N0500_R113_T10TFK_20230709T125120_LFMC_v01_qa.tif
+  lfmc_camp_fire_20181106_S2B_MSIL2A_20181106T185559_N0500_R113_T10TFK_20230709T125120_LFMC_v01_vegetation.tif
+  lfmc_camp_fire_20181106_S2B_MSIL2A_20181106T185559_N0500_R113_T10TFK_20230709T125120_LFMC_v01.json
 </code></pre>
 <p>The first GeoTIFF contains LFMC as percent dry mass. The QA raster explains
 where predictions are valid or missing. The JSON file records source identities,
@@ -236,7 +243,10 @@ import json
 import numpy as np
 import rasterio
 
-output = Path(&quot;outputs/lfmc_20210722.tif&quot;)
+output = Path(&quot;outputs&quot;) / (
+    &quot;lfmc_camp_fire_20181106_&quot;
+    &quot;S2B_MSIL2A_20181106T185559_N0500_R113_T10TFK_20230709T125120_LFMC_v01.tif&quot;
+)
 with rasterio.open(output) as source:
     lfmc = source.read(1, masked=True)
     print(&quot;Grid:&quot;, source.crs, source.res, source.shape)
@@ -251,10 +261,10 @@ provenance = json.loads(output.with_suffix(&quot;.json&quot;).read_text())
 print(&quot;Vegetation counts:&quot;, provenance[&quot;classes&quot;])
 print(&quot;Weather mode:&quot;, provenance[&quot;weather_mode&quot;])
 </code></pre>
-<p>The exercised Sentinel-2 example produced 8,701 valid pixels. Future catalogue
-changes or a different selected scene may change that result; use the recorded
-source identities when making a numerical comparison. A missing pixel is not a
-zero-moisture observation. See the <a href="../outputs/">output guide</a> for each QA code.</p>
+<p>The verified run produced <strong>27,792 valid estimates out of 29,750 pixels
+(93.4%)</strong> on the 20 m grid. All pixels passed the optical screening. The
+remaining 1,958 had no eligible vegetation model, as shown by code <code>1</code>
+in the <a href="../outputs/#geotiff-products">QA raster</a>.</p>
 <h2 id="5-try-the-optional-weather-adjustment">5. Try the optional weather adjustment</h2>
 <p>The appendix methodology adjusts weather using local terrain elevation and a
 coarse reference elevation. The available reference is reconstructed from a
@@ -265,15 +275,15 @@ as distinct runs.</p>
 <pre><code class="language-python">import json
 from pathlib import Path
 
-source = Path(&quot;examples/sentinel2_2021.json&quot;)
+source = Path(&quot;examples/sentinel2_camp_fire_2018.json&quot;)
 configuration = json.loads(source.read_text())
 configuration[&quot;downscale&quot;] = True
-configuration[&quot;output&quot;] = &quot;../outputs/lfmc_20210722_downscaled.tif&quot;
-Path(&quot;examples/sentinel2_2021_downscaled.json&quot;).write_text(
+configuration[&quot;output&quot;] = &quot;../outputs/lfmc_camp_fire_20181106_downscaled.tif&quot;
+Path(&quot;examples/sentinel2_camp_fire_2018_downscaled.json&quot;).write_text(
     json.dumps(configuration, indent=2) + &quot;\n&quot;
 )
 </code></pre>
-<pre><code class="language-text">lfmc-multisensor run examples/sentinel2_2021_downscaled.json
+<pre><code class="language-text">lfmc-multisensor run examples/sentinel2_camp_fire_2018_downscaled.json
 </code></pre>
 <p>This run automatically obtains the optional reference and reuses applicable
 cached inputs. The unadjusted run does not require that reference. A finer

@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/installation/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Installation - lfmc-multisensor</title>
+        <title>Installation - LFMC Multisensor</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -17,14 +17,20 @@
         <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/site.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
+        <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/png" href="../assets/lfmc-mark.png">
+
     </head>
 
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+<a class="navbar-brand lfmc-brand" href="..">
+    <img src="../assets/lfmc-logo.png" alt="LFMC Multisensor" width="900" height="245">
+</a>
+
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -137,14 +143,13 @@ activating the environment also sets the paths needed by GDAL and other native
 libraries. Calling an environment's <code>python.exe</code> directly does not provide the
 same setup.</p>
 <h2 id="clone-the-repository">Clone the repository</h2>
-<p>Install Git and <a href="https://git-lfs.com/">Git LFS</a>, then run <code>git lfs install</code> once
-before cloning. On the GitHub project page, copy the HTTPS clone URL from
-<strong>Code</strong> and run <code>git clone</code> with that URL. Git LFS retrieves the three model
-files into <code>model-assets/</code> as part of checkout, about 628 MB in total. A
-public clone requires no model-host account or access request.</p>
-<p>If you already cloned the project and the model files are tiny pointer files,
-run <code>git lfs pull</code> from the repository folder. Use a Git LFS checkout for the
-installation.</p>
+<p>Install <a href="https://git-scm.com/downloads">Git</a>. In the parent folder where you
+want to keep the project, run:</p>
+<pre><code class="language-text">git clone https://github.com/valpamp/lfmc-multisensor.git
+cd lfmc-multisensor
+</code></pre>
+<p>The public clone includes the three compressed model bundles in
+<code>model-assets/</code>, about 170 MiB in total. Standard Git is sufficient.</p>
 <h2 id="tested-windows-installation">Tested Windows installation</h2>
 <ol>
 <li>Install <a href="https://github.com/conda-forge/miniforge#windows">Miniforge for Windows x86_64</a>
@@ -171,27 +176,29 @@ repository adds the <code>lfmc-multisensor</code> command. The lock includes bui
 the installation can use them without creating a separate build environment.</p>
 <p>Check which environment is running:</p>
 <pre><code class="language-text">python -c &quot;import sys, numpy, rasterio; print(sys.prefix); print(numpy.__version__); print(rasterio.__version__)&quot;
-python -m lfmc_multisensor.cli plan examples/sentinel2_2021.json
+python -m lfmc_multisensor.cli plan examples/sentinel2_camp_fire_2018.json
 </code></pre>
 <p>The printed prefix should identify the environment you just activated. The plan
 command does not download data. If a terminal cannot retain activation, use
 Conda to launch each command:</p>
-<pre><code class="language-text">conda run --no-capture-output -n lfmc-multisensor python -m lfmc_multisensor.cli plan examples/sentinel2_2021.json
+<pre><code class="language-text">conda run --no-capture-output -n lfmc-multisensor python -m lfmc_multisensor.cli plan examples/sentinel2_camp_fire_2018.json
 </code></pre>
 <h2 id="supply-the-published-models">Supply the published models</h2>
 <p>The checkout includes all three LFMC model bundles from model set <strong>1.0.0</strong>:</p>
 <pre><code class="language-text">model-assets/
-  best_Grass_gapfill_within_site.joblib
-  best_Shrub_gapfill_within_site.joblib
-  best_Tree_gapfill_within_site.joblib
+  best_Grass_gapfill_within_site.joblib.bz2
+  best_Shrub_gapfill_within_site.joblib.bz2
+  best_Tree_gapfill_within_site.joblib.bz2
 </code></pre>
 <p>The example configurations already refer to this directory. To use another
 location, change <code>models_dir</code> in the configuration. Paths are resolved relative
 to the configuration file, including when you run the CLI from another directory.</p>
-<p>In the GUI, select the <code>model-assets</code> folder and click <strong>Check models</strong> before
-running the first map. The loader verifies the files' SHA-256 checksums and
-checks their contents. It requires scikit-learn <strong>1.9.0</strong>, which is included in
-the Windows environment above.</p>
+<p>In the GUI, select <code>model-assets</code> and click <strong>Check models</strong> before running
+the first map. Both <strong>Check models</strong> and a CLI run automatically extract and
+verify each bundle on first use. Allow about 600 MiB of extra space in the
+model directory for the extracted <code>.joblib</code> files. Subsequent runs reuse
+these files and verify them against the published SHA-256 checksums. The
+Windows environment above includes the required scikit-learn <strong>1.9.0</strong>.</p>
 <p>Only load files from a trusted source. Joblib/Python model serialisation can
 execute code; a model file is not an inert data table.</p>
 <h2 id="desktop-interface">Desktop interface</h2>

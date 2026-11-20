@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/accounts/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Provider accounts - lfmc-multisensor</title>
+        <title>Provider accounts - LFMC Multisensor</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -17,14 +17,20 @@
         <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/site.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
+        <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/png" href="../assets/lfmc-mark.png">
+
     </head>
 
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+<a class="navbar-brand lfmc-brand" href="..">
+    <img src="../assets/lfmc-logo.png" alt="LFMC Multisensor" width="900" height="245">
+</a>
+
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -184,17 +190,24 @@ Data Store access for daily weather. Other products use the routes below.</p>
    <a href="https://eodata-s3keysmanager.dataspace.copernicus.eu/panel/s3-credentials">S3 credentials manager</a>.</li>
 <li>Choose <strong>Add Credentials</strong>, set an expiry date and confirm. Save the access
    key and secret key securely. The secret is shown once. <a href="https://documentation.dataspace.copernicus.eu/APIs/S3.html">CDSE S3 instructions</a></li>
-<li>In the activated Windows Conda <strong>Command Prompt</strong>, run each line in turn and
-   paste the corresponding key when prompted.</li>
+<li>In a Windows <strong>PowerShell</strong> terminal with the LFMC Conda environment
+   activated, copy and run each line exactly as shown. When the terminal asks
+   for a key, paste only the key and press Enter. The quoted labels are the
+   prompts you will see. Leave them as written. PowerShell masks the secret
+   key as you enter it.</li>
 </ol>
+<pre><code class="language-powershell">$env:CDSE_S3_ACCESS_KEY = Read-Host &quot;CDSE access key&quot;
+$env:CDSE_S3_SECRET_KEY = [System.Net.NetworkCredential]::new('', (Read-Host &quot;CDSE secret key&quot; -AsSecureString)).Password
+</code></pre>
+<p>If your terminal is <strong>Command Prompt (cmd.exe)</strong>, including Anaconda Prompt,
+use these commands instead. Run each line as written and paste the key when
+prompted. Command Prompt displays what you enter.</p>
 <pre><code class="language-bat">set /p &quot;CDSE_S3_ACCESS_KEY=CDSE access key: &quot;
 set /p &quot;CDSE_S3_SECRET_KEY=CDSE secret key: &quot;
 </code></pre>
-<p>Launch the GUI or CLI from that prompt. These settings last until you close
-the terminal. If you use PowerShell, set the same variables with
-<code>$env:CDSE_S3_ACCESS_KEY = Read-Host "CDSE access key"</code> and
-<code>$env:CDSE_S3_SECRET_KEY = Read-Host "CDSE secret key"</code>. Generate a new pair
-when the keys expire.</p>
+<p>Run the <a href="#check-what-the-package-can-find">access check</a> and launch the LFMC
+GUI or CLI from the same terminal so it can read the keys. These settings
+last until you close that terminal. Generate a new pair when the keys expire.</p>
 <p>Sentinel-2 uses S3 to read native AOI windows from reflectance and raster
 masks. Sentinel-3 also uses S3 and downloads the complete files it needs
 from the selected swath.</p>
@@ -205,8 +218,10 @@ currently requires the S3 keys. Prefer the exercised
 S3 route for the tutorial.</p>
 <h2 id="climate-data-store">Climate Data Store</h2>
 <ol>
-<li>Register or sign in to CDS and copy the two configuration lines shown by the
-   <a href="https://cds.climate.copernicus.eu/how-to-api">CDS API setup page</a>.</li>
+<li>On the <a href="https://cds.climate.copernicus.eu/how-to-api">CDS API setup page</a>,
+   follow <strong>1. Setup the CDS Api key</strong>. Register or sign in, then copy the two
+   configuration lines beginning with <code>url:</code> and <code>key:</code>. The page shows a Unix
+   path for the file. On Windows, use the location in the next step.</li>
 <li>Save those lines in <code>%USERPROFILE%\.cdsapirc</code> on Windows. In Notepad, choose
    <strong>All files</strong> when saving and make sure the name is exactly <code>.cdsapirc</code>.</li>
 <li>While signed in, open the
@@ -224,18 +239,22 @@ configured correctly while a request is still waiting for completion.</p>
    DAAC application. <a href="https://urs.earthdata.nasa.gov/documentation/for_users/how_to_preauth_app">NASA application authorisation</a></li>
 <li>From your profile, choose <strong>Generate Token</strong> and copy the token when
    displayed. <a href="https://urs.earthdata.nasa.gov/documentation/for_users/user_token">NASA token instructions</a></li>
-<li>In the activated Windows Conda Command Prompt, run the following and paste
-   the token when prompted. Launch LFMC from the same terminal.</li>
+<li>In <strong>PowerShell</strong> with the LFMC Conda environment activated, copy and run
+   this line as written. Paste the token at the masked prompt and press Enter.</li>
 </ol>
+<pre><code class="language-powershell">$env:EARTHDATA_TOKEN = [System.Net.NetworkCredential]::new('', (Read-Host &quot;Earthdata token&quot; -AsSecureString)).Password
+</code></pre>
+<p>If you are using <strong>Command Prompt (cmd.exe)</strong>, run this line as written and
+paste the token when prompted. Command Prompt displays what you enter.</p>
 <pre><code class="language-bat">set /p &quot;EARTHDATA_TOKEN=Earthdata token: &quot;
 </code></pre>
-<p>In PowerShell, use <code>$env:EARTHDATA_TOKEN = Read-Host "Earthdata token"</code>.
-You can also use a home-directory <code>.netrc</code> or <code>_netrc</code> with an
+<p>Launch LFMC from the same terminal. You can also use a home-directory
+<code>.netrc</code> or <code>_netrc</code> with an
 <code>urs.earthdata.nasa.gov</code> entry, or set both <code>EARTHDATA_USERNAME</code> and
 <code>EARTHDATA_PASSWORD</code>. <a href="https://urs.earthdata.nasa.gov/documentation/for_users/data_access/curl_and_wget">NASA netrc instructions</a></p>
 <h2 id="check-what-the-package-can-find">Check what the package can find</h2>
 <p>In your activated Conda environment:</p>
-<pre><code class="language-text">lfmc-multisensor access-check examples/sentinel2_2021.json
+<pre><code class="language-text">lfmc-multisensor access-check examples/sentinel2_camp_fire_2018.json
 </code></pre>
 <p>The command reports whether configuration is present, without returning secret
 values. It does not authenticate against each provider or prove that terms have

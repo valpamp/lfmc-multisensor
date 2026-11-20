@@ -8,7 +8,7 @@
         
         <link rel="canonical" href="https://valpamp.github.io/lfmc-multisensor/gui/">
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Desktop GUI - lfmc-multisensor</title>
+        <title>Desktop GUI - LFMC Multisensor</title>
         <link href="../css/bootstrap.min.css" rel="stylesheet">
         <link href="../css/fontawesome.min.css" rel="stylesheet">
         <link href="../css/brands.min.css" rel="stylesheet">
@@ -17,14 +17,20 @@
         <link href="../css/base.css" rel="stylesheet">
         <link id="hljs-light" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" >
         <link id="hljs-dark" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css" disabled>
+        <link href="../assets/site.css" rel="stylesheet">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
-        <script>hljs.highlightAll();</script> 
+        <script>hljs.highlightAll();</script>
+<link rel="icon" type="image/png" href="../assets/lfmc-mark.png">
+
     </head>
 
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="..">lfmc-multisensor</a>
+<a class="navbar-brand lfmc-brand" href="..">
+    <img src="../assets/lfmc-logo.png" alt="LFMC Multisensor" width="900" height="245">
+</a>
+
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbar-collapse" aria-controls="navbar-collapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -176,7 +182,10 @@ window. A prediction is retained only when its pixel centre lies on or inside
 the polygon union; hole interiors are excluded. The saved grid remains native,
 with no-data outside the selected polygons. Input footprints are not reshaped
 or resampled to make polygon boundaries look smoother.</p>
-<p>To try the supplied example, load <code>examples/sentinel2_shapefile_2021.json</code> using
+<p>For the first map, use <strong>Load configuration</strong> to open
+<code>examples/sentinel2_camp_fire_2018.json</code>. It selects a Sentinel-2 scene and a
+small bounding box in the Camp Fire study area.</p>
+<p>To try shapefile masking, load <code>examples/sentinel2_shapefile_2021.json</code> using
 <strong>Load configuration</strong>. Its manually drawn Sardinia AOI includes a cut corner
 and a small hole to demonstrate masking. It is not a field-site or fire-perimeter
 dataset. Replace the models/cache/output paths for your installation.</p>
